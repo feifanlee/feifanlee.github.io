@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="feifanlee.github.io">
 <meta property="og:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T09:05:43.429Z">
+<meta property="og:updated_time" content="2019-06-10T09:30:59.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Airflow安装部署">
 <meta name="twitter:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
@@ -243,15 +243,38 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sql_alchemy_conn</span> = mysql+mysqldb://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意</strong>：此处不可以用pymysql，会出现<em>pendulum has no object translate</em>问题。</p>
+<h3 id="2-3-配置Celery"><a href="#2-3-配置Celery" class="headerlink" title="2.3 配置Celery"></a>2.3 配置Celery</h3><p>这里以redis作为消息队列mysql作为日志后端为例。首先安装依赖包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[celery,redis,mysql]</span><br></pre></td></tr></table></figure>
+
+<p>在<em>airflow.cfg</em>中设置用celery方式运行。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">executor</span> = CeleryExecutor</span><br></pre></td></tr></table></figure>
+
+<p>配置每个worker能运行的任务数</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">worker_concurrency</span> = <span class="number">32</span></span><br></pre></td></tr></table></figure>
+
+<p>配置消息队列。（<em>redis.conf</em>中记得要设置<code>protected-mode no</code>。）</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">broker_url</span> = redis://localhost:<span class="number">6379</span>/<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>配置日志后端</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">result_backend</span> = db+mysql://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
+
+<p>具体配置参数参考<a href="http://docs.celeryproject.org/en/latest/index.html" target="_blank" rel="noopener">Celery文档</a>。</p>
 <h2 id="3-Airflow的使用"><a href="#3-Airflow的使用" class="headerlink" title="3. Airflow的使用"></a>3. Airflow的使用</h2><h3 id="3-1-启动Airflow"><a href="#3-1-启动Airflow" class="headerlink" title="3.1 启动Airflow"></a>3.1 启动Airflow</h3><p>初始化DB</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow initdb</span><br></pre></td></tr></table></figure>
 
 <p>运行webUI</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow webserver [-p 8080]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow webserver [-p 8080]  [-D]</span><br></pre></td></tr></table></figure>
 
 <p>开启调度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow scheduler</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow scheduler [-D]</span><br></pre></td></tr></table></figure>
 
+<h3 id="3-2-启动Celery"><a href="#3-2-启动Celery" class="headerlink" title="3.2 启动Celery"></a>3.2 启动Celery</h3><p>在各个工作节点上启动worker。（<strong>注意</strong>：需要先在工作节点上按第二节安装相同环境、配置及DAG！）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow worker [-D]</span><br></pre></td></tr></table></figure>
+
+<p>启动监控worker状态的flower（目前测试flower总是有问题，不知道原因）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow flower [-D]</span><br></pre></td></tr></table></figure>
+
+<p>之后可以在5555端口打开flower界面。</p>
 
       
 
