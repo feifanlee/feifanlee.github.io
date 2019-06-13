@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="feifanlee.github.io">
 <meta property="og:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T09:30:59.410Z">
+<meta property="og:updated_time" content="2019-06-13T02:50:25.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Airflow安装部署">
 <meta name="twitter:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
@@ -177,8 +177,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:~/anaconda3/bin</span><br><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
 
 <h3 id="1-2-Redis"><a href="#1-2-Redis" class="headerlink" title="1.2 Redis"></a>1.2 Redis</h3><p><a href="https://redis.io/download" target="_blank" rel="noopener">Redis</a>用来作为消息队列支持airflow分布式部署。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TODO</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
 
+<h3 id="1-3-MySql"><a href="#1-3-MySql" class="headerlink" title="1.3 MySql"></a>1.3 MySql</h3><p>Mysql作为调度与日志的后台。</p>
 <h2 id="2-Airflow安装"><a href="#2-Airflow安装" class="headerlink" title="2. Airflow安装"></a>2. Airflow安装</h2><h3 id="2-1-python包安装"><a href="#2-1-python包安装" class="headerlink" title="2.1 python包安装"></a>2.1 python包安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n airflow pip</span><br><span class="line">conda activate airflow</span><br><span class="line">pip install apache-airflow</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -236,14 +237,18 @@
 <p>之后配置Mysql</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">'airflow'</span>@<span class="string">'%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'airflow'</span>;  </span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;  </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> airflow <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci; </span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> <span class="string">`airflow`</span>.* <span class="keyword">to</span> <span class="string">'airflow'</span>@<span class="string">'%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'airflow'</span>;  </span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意</strong>：airflow要求打开全局变量<em>explicit_defaults_for_timestamp</em>。</p>
+<blockquote>
+<p><strong>注意：</strong> airflow要求打开全局变量<em>explicit_defaults_for_timestamp</em>。</p>
+</blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> @@global.explicit_defaults_for_timestamp=<span class="keyword">on</span>;</span><br></pre></td></tr></table></figure>
 
 <p>修改airflow.cfg中的配置</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sql_alchemy_conn</span> = mysql+mysqldb://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意</strong>：此处不可以用pymysql，会出现<em>pendulum has no object translate</em>问题。</p>
-<h3 id="2-3-配置Celery"><a href="#2-3-配置Celery" class="headerlink" title="2.3 配置Celery"></a>2.3 配置Celery</h3><p>这里以redis作为消息队列mysql作为日志后端为例。首先安装依赖包。</p>
+<blockquote>
+<p><strong>注意：</strong> 此处不可以用pymysql，会出现<em>pendulum has no object translate</em>问题。</p>
+</blockquote>
+<h3 id="2-4-配置Celery"><a href="#2-4-配置Celery" class="headerlink" title="2.4 配置Celery"></a>2.4 配置Celery</h3><p>这里以redis作为消息队列mysql作为日志后端为例。首先安装依赖包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[celery,redis,mysql]</span><br></pre></td></tr></table></figure>
 
 <p>在<em>airflow.cfg</em>中设置用celery方式运行。</p>
@@ -259,6 +264,21 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">result_backend</span> = db+mysql://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
 
 <p>具体配置参数参考<a href="http://docs.celeryproject.org/en/latest/index.html" target="_blank" rel="noopener">Celery文档</a>。</p>
+<h3 id="2-5-开启用户登录及密码"><a href="#2-5-开启用户登录及密码" class="headerlink" title="2.5 开启用户登录及密码"></a>2.5 开启用户登录及密码</h3><p>安装airflow密码认证模块。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[password]</span><br></pre></td></tr></table></figure>
+
+<p>在<em>airflow.cfg</em>的<code>webserver</code>块下开启认证并配置认证方式</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ webserver ]</span></span><br><span class="line"><span class="attr">authenticate</span> = <span class="literal">True</span></span><br><span class="line"><span class="attr">auth_backend</span> = airflow.contrib.auth.backends.password_auth</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：</strong> 是在<code>webserver</code>块下自己新增<code>auth_backend</code>，而不是<code>api</code>块下原本已经有的。</p>
+</blockquote>
+<p>运行python代码新增用户。（目前webui添加用户无法使用密码）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> airflow </span><br><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> models, settings </span><br><span class="line"><span class="keyword">from</span> airflow.contrib.auth.backends.password_auth <span class="keyword">import</span> PasswordUser </span><br><span class="line">user = PasswordUser(models.User()) </span><br><span class="line">user.username = <span class="string">'lifeifan'</span> </span><br><span class="line">user.email = <span class="string">'feifanvivian@sina.com'</span> </span><br><span class="line">user.password = <span class="string">'lifeifan'</span> </span><br><span class="line"><span class="comment">#user.superuser = 1</span></span><br><span class="line">session = settings.Session() </span><br><span class="line">session.add(user) </span><br><span class="line">session.commit() </span><br><span class="line">session.close()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也可以直接在backend的数据库中的users表中添加修改</p>
+</blockquote>
 <h2 id="3-Airflow的使用"><a href="#3-Airflow的使用" class="headerlink" title="3. Airflow的使用"></a>3. Airflow的使用</h2><h3 id="3-1-启动Airflow"><a href="#3-1-启动Airflow" class="headerlink" title="3.1 启动Airflow"></a>3.1 启动Airflow</h3><p>初始化DB</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow initdb</span><br></pre></td></tr></table></figure>
 
@@ -268,13 +288,17 @@
 <p>开启调度</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow scheduler [-D]</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-2-启动Celery"><a href="#3-2-启动Celery" class="headerlink" title="3.2 启动Celery"></a>3.2 启动Celery</h3><p>在各个工作节点上启动worker。（<strong>注意</strong>：需要先在工作节点上按第二节安装相同环境、配置及DAG！）</p>
+<h3 id="3-2-启动Celery"><a href="#3-2-启动Celery" class="headerlink" title="3.2 启动Celery"></a>3.2 启动Celery</h3><p>在各个工作节点上启动worker。（<strong>注意：</strong> 需要先在工作节点上按第二节安装相同环境、配置及DAG！）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow worker [-D]</span><br></pre></td></tr></table></figure>
 
-<p>启动监控worker状态的flower（目前测试flower总是有问题，不知道原因）</p>
+<p>启动监控worker状态的flower</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow flower [-D]</span><br></pre></td></tr></table></figure>
 
 <p>之后可以在5555端口打开flower界面。</p>
+<blockquote>
+<p>由于目前airflow自带flower无法打开，不知道是否为当前环境问题，可以尝试自己安装celery和flower规避该问题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda create -n celery pip</span><br><span class="line">&gt; conda activate celery</span><br><span class="line">&gt; pip install celery,flower</span><br><span class="line">&gt; flower -b redis://127.0.0.1/0</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
 
       
 
