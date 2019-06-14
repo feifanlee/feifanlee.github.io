@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>Tag: airflow | feifanlee.github.io</title>
+  <title>Airflow使用指北 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="feifanlee.github.io">
-<meta property="og:url" content="http://feifanlee.githu.io/tags/airflow/index.html">
+  <meta name="description" content="1. 名词解释1.1 DAGsDAG: 有向无环图。是定义了你希望运行的任务的关系和依赖的集合。 1.2 Operators定义了任务。任务之间可以用位操作定义依赖和关联关系。 1op1 &amp;gt;&amp;gt; op2 &amp;gt;&amp;gt; op3 &amp;lt;&amp;lt; op4">
+<meta name="keywords" content="airflow,调度,大数据,技术,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Airflow使用指北">
+<meta property="og:url" content="http://feifanlee.githu.io/2019/06/13/airflow-tutorial/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
+<meta property="og:description" content="1. 名词解释1.1 DAGsDAG: 有向无环图。是定义了你希望运行的任务的关系和依赖的集合。 1.2 Operators定义了任务。任务之间可以用位操作定义依赖和关联关系。 1op1 &amp;gt;&amp;gt; op2 &amp;gt;&amp;gt; op3 &amp;lt;&amp;lt; op4">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-14T06:15:16.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="feifanlee.github.io">
+<meta name="twitter:title" content="Airflow使用指北">
+<meta name="twitter:description" content="1. 名词解释1.1 DAGsDAG: 有向无环图。是定义了你希望运行的任务的关系和依赖的集合。 1.2 Operators定义了任务。任务之间可以用位操作定义依赖和关联关系。 1op1 &amp;gt;&amp;gt; op2 &amp;gt;&amp;gt; op3 &amp;lt;&amp;lt; op4">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -144,36 +149,165 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-airflow-tutorial" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/13/airflow-tutorial/" class="archive-article-date">
-  	<time datetime="2019-06-13T05:29:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/13/airflow-tutorial/">Airflow使用指北</a>
+    <h1 class="article-title" itemprop="name">
+      Airflow使用指北
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/13/airflow-tutorial/" class="archive-article-date">
+  	<time datetime="2019-06-13T05:29:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="1. 名词解释"></a>1. 名词解释</h2><h3 id="1-1-DAGs"><a href="#1-1-DAGs" class="headerlink" title="1.1 DAGs"></a>1.1 DAGs</h3><p>DAG: 有向无环图。是定义了你希望运行的任务的关系和依赖的集合。</p>
+<h3 id="1-2-Operators"><a href="#1-2-Operators" class="headerlink" title="1.2 Operators"></a>1.2 Operators</h3><p>定义了任务。任务之间可以用位操作定义依赖和关联关系。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">op1 &gt;&gt; op2 &gt;&gt; op3 &lt;&lt; op4</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<p>op1运行完成后运行op2，op2和op4运行完成后运行op3。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[op1,op2] &gt;&gt; op3</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-Tasks和Task-Instances"><a href="#1-3-Tasks和Task-Instances" class="headerlink" title="1.3 Tasks和Task Instances"></a>1.3 Tasks和Task Instances</h3><p>Task是operator传入参数成为DAG中一个节点后的名字。<br><br>Task Instances是DAG实际运行时，传入执行时间等后的Task，有一个状态”<em>running</em>“,”<em>success</em>“,”<em>up_for_retry</em>“等。</p>
+<h3 id="1-4-Hooks"><a href="#1-4-Hooks" class="headerlink" title="1.4 Hooks"></a>1.4 Hooks</h3><p>对不同存储数据源封装连接和认证方式后的提供的接口。可以理解为Airflow封装过的Connection。在<code>airflow.operators.PythonOperator</code>中可能会使用到。</p>
+<h3 id="1-5-Pools"><a href="#1-5-Pools" class="headerlink" title="1.5 Pools"></a>1.5 Pools</h3><p>用来限制任务运行并行度的池子。<br><br>在UI <em>(Menu -&gt; Admin -&gt; Pools)</em> 中定义Pools后，定义Task时传入<code>pool</code>参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aggregate_db_message_job = BashOperator(</span><br><span class="line">    task_id=<span class="string">'aggregate_db_message_job'</span>,</span><br><span class="line">    execution_timeout=timedelta(hours=<span class="number">3</span>),</span><br><span class="line">    pool=<span class="string">'ep_data_pipeline_db_msg_agg'</span>,</span><br><span class="line">    bash_command=aggregate_db_message_job_cmd,</span><br><span class="line">    dag=dag)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-Connections"><a href="#1-6-Connections" class="headerlink" title="1.6 Connections"></a>1.6 Connections</h3><p>数据库连接。<br>在 UI <em>(Menu -&gt; Admin -&gt; Connections)</em>中定义Connections后，定义一些Task时需要传入。</p>
+<h3 id="1-7-Queues"><a href="#1-7-Queues" class="headerlink" title="1.7 Queues"></a>1.7 Queues</h3><p>Celery中的概念。</p>
+<h3 id="1-8-XComs"><a href="#1-8-XComs" class="headerlink" title="1.8 XComs"></a>1.8 XComs</h3><p>XComs让tasks之间传递信息。用不上。<br><br>可以直接使用jinja模板语言，在{ {} }中调用ti的xcom_push和xcom_pull方法，下面的例子为t1使用xcom_push推出了一个kv，t2通过taskid和key来接收</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dag = DAG( </span><br><span class="line">   dag_id=<span class="string">'xcomtest'</span>, default_args=default_args, schedule_interval=<span class="string">'*/2 * ** *'</span>) </span><br><span class="line">    </span><br><span class="line">t1 = BashOperator( </span><br><span class="line">   task_id=<span class="string">'xcom'</span>, </span><br><span class="line">   bash_command=<span class="string">'''''&#123; &#123; ti.xcom_push(key='aaa', value='bbb') &#125; &#125;'''</span>, </span><br><span class="line">    dag=dag) </span><br><span class="line">    </span><br><span class="line">t2 = BashOperator( </span><br><span class="line">   task_id=<span class="string">'xcom2'</span>, </span><br><span class="line">    bash_command=<span class="string">'''''echo"&#123; &#123; ti.xcom_pull(key='aaa', task_ids='xcom') &#125; &#125;" '''</span>, </span><br><span class="line">    dag=dag) </span><br><span class="line">t2.set_upstream(t1)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-9-Variables"><a href="#1-9-Variables" class="headerlink" title="1.9 Variables"></a>1.9 Variables</h3><p>变量。可以在UI (Admin -&gt; Variables), python代码或CLI中创建更改删除。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Python代码中使用Variable</span></span><br><span class="line"><span class="keyword">from</span> airflow.models <span class="keyword">import</span> Variable</span><br><span class="line">foo = Variable.get(<span class="string">"foo"</span>)</span><br><span class="line">bar = Variable.get(<span class="string">"bar"</span>, deserialize_json=<span class="literal">True</span>)</span><br><span class="line">baz = Variable.get(<span class="string">"baz"</span>, default_var=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>也可以用Jinja在sql、bash、string各种地方使用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> &#123; &#123;var.value.table_name_in_variable&#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果var是一个json可以解析。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> &#123; &#123; var.json.variable_name &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-10-Branching"><a href="#1-10-Branching" class="headerlink" title="1.10 Branching"></a>1.10 Branching</h3><p>DAG分支<br>//TODO</p>
+<h3 id="1-11-SubDAGs"><a href="#1-11-SubDAGs" class="headerlink" title="1.11 SubDAGs"></a>1.11 SubDAGs</h3><p>子DAGs。定义dag时使用其他DAG。<br>//TODO</p>
+<h3 id="1-12-SLAs"><a href="#1-12-SLAs" class="headerlink" title="1.12 SLAs"></a>1.12 SLAs</h3><p>服务等级协议。在task level中用<code>timedelta</code>定义。一个或多个实例在该时间前没有成功就会发送警报邮件。<br>//TODO</p>
+<h3 id="1-13-Trigger-Rules"><a href="#1-13-Trigger-Rules" class="headerlink" title="1.13 Trigger Rules"></a>1.13 Trigger Rules</h3><p>一般来说一个task运行的前提时它的上游任务全部成功。但是可以通过触发规则定义更复杂的依赖规则。<br><br>所有operator都有<code>trigger_rule</code>这个参数可以传入触发规则。默认值为<code>all_success</code>。</p>
+<ul>
+<li><code>all_success</code>: (default) 所有依赖都成功。</li>
+<li><code>all_failed</code>: 所有依赖为<code>failed</code>或<code>upstream_failed</code>状态。</li>
+<li><code>all_done</code>: 所有依赖都运行完成。</li>
+<li><code>one_failed</code>: 只要有一个依赖失败就开始。</li>
+<li><code>one_success</code>: 只要有一个依赖成功就开始。</li>
+<li><code>none_failed</code>: 所有依赖都没有失败 (<code>failed</code>或<code>upstream_failed</code>)。 i.e. 依赖都为<code>succeeded</code>或<code>skipped</code>。</li>
+<li><code>none_skipped</code>: 没有依赖为<code>skipped</code>状态, i.e. <code>success</code>, <code>failed</code>, 或 <code>upstream_failed</code>。</li>
+<li><code>dummy</code>: 依赖只是用来看看的, 马上就会触发。</li>
+</ul>
+<p>注意<code>depends_on_past</code>参数，只有上一次调度运行成功这次才会运行。</p>
+<h3 id="1-14-Lastest-Run-Only"><a href="#1-14-Lastest-Run-Only" class="headerlink" title="1.14 Lastest Run Only"></a>1.14 Lastest Run Only</h3><p><code>LatestOnlyOperator</code>只在最新的schedule中运行（当前时间不在<em>execution_time</em>和下个<em>execution_time</em>中间），跳过（skip）所有下游任务。</p>
+<h3 id="1-15-Cluster-Policy"><a href="#1-15-Cluster-Policy" class="headerlink" title="1.15 Cluster Policy"></a>1.15 Cluster Policy</h3><p>在global定义一个<code>policy</code>的function。入参是task，可以用来调整task的属性（如timout）。</p>
+<h3 id="1-16-Documentation-amp-Notes"><a href="#1-16-Documentation-amp-Notes" class="headerlink" title="1.16 Documentation &amp; Notes"></a>1.16 Documentation &amp; Notes</h3><p>可以给dag或task对象添加属性让他们在webui (“Graph View” for dags, “Task Details” for tasks)上显示文档。给对象添加doc_md属性为md格式的字符串。</p>
+<h3 id="1-17-Jinja-Templating"><a href="#1-17-Jinja-Templating" class="headerlink" title="1.17 Jinja Templating"></a>1.17 Jinja Templating</h3><p>可以在sql、字符串等地方使用<a href="http://jinja.pocoo.org/docs/dev/" target="_blank" rel="noopener">Jinjy Templating</a>使用变量及宏方法。<br>//TODO</p>
+<h3 id="1-18-Packaged-dags"><a href="#1-18-Packaged-dags" class="headerlink" title="1.18 Packaged dags"></a>1.18 Packaged dags</h3><p>dag文件可以打包成zip。但是必须在根目录中。</p>
+<h3 id="1-19-airflowignore"><a href="#1-19-airflowignore" class="headerlink" title="1.19 .airflowignore"></a>1.19 .airflowignore</h3><p>文件定义了<code>DAG_FOLDER</code>中无视的文件、文件夹及路径，可以用正则。</p>
+<h2 id="2-DAG"><a href="#2-DAG" class="headerlink" title="2. DAG"></a>2. DAG</h2><p>所有定义DAG的python代码，放在配置文件中指定的目录中。默认为<code>$AIRFLOW_HOME/dags</code>。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dags_folder</span> = /home/lifeifan/airflow/dags</span><br></pre></td></tr></table></figure>
+
+<p>Airflow中使用python代码定义任务依赖关系和流程，形成DAG。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> DAG</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta</span><br><span class="line"></span><br><span class="line">default_args = &#123;</span><br><span class="line">    <span class="string">'owner'</span>: <span class="string">'airflow'</span>,</span><br><span class="line">    <span class="string">'depends_on_past'</span>: <span class="literal">False</span>,</span><br><span class="line">    <span class="string">'start_date'</span>: datetime(<span class="number">2019</span>, <span class="number">6</span>, <span class="number">6</span>),</span><br><span class="line">    <span class="string">'email'</span>: [<span class="string">'feifanvivian@sina.com'</span>],</span><br><span class="line">    <span class="string">'email_on_failure'</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'email_on_retry'</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'retries'</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">'retry_delay'</span>: timedelta(minutes=<span class="number">1</span>),</span><br><span class="line">    <span class="string">'catchup'</span>:<span class="literal">False</span>,</span><br><span class="line">    <span class="comment"># 'queue': 'bash_queue',</span></span><br><span class="line">    <span class="comment"># 'pool': 'backfill',</span></span><br><span class="line">    <span class="comment"># 'priority_weight': 10,</span></span><br><span class="line">    <span class="comment"># 'end_date': datetime(2016, 1, 1),</span></span><br><span class="line">&#125;</span><br><span class="line">dag = DAG(<span class="string">'lfftestdag'</span>, default_args=default_args, schedule_interval=timedelta(days=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：</strong> 代码中的dag必须在global中定义，而不能在function等中定义。<br>DAG也可以这么定义：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> DAG(<span class="string">'my_dag'</span>, start_date=datetime(<span class="number">2016</span>, <span class="number">1</span>, <span class="number">1</span>)) <span class="keyword">as</span> dag:</span><br><span class="line">    op = DummyOperator(<span class="string">'op'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这样就会在<code>with</code>下的代码块中的task自动使用该dag。</p>
+<h2 id="3-Jinja-Template"><a href="#3-Jinja-Template" class="headerlink" title="3. Jinja Template"></a>3. Jinja Template</h2><p>在python、sql和很多地方，可以使用Jinja表达式来插入参数值。</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>{ { ds } }</code></td>
+<td>执行日期<code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>{ { ds_nodash } }</code></td>
+<td>执行日期<code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>{ { prev_ds } }</code></td>
+<td>上次执行日期</td>
+</tr>
+<tr>
+<td><code>{ { prev_ds_nodash } }</code></td>
+<td>上次执行日期</td>
+</tr>
+<tr>
+<td><code>{ { next_ds } }</code></td>
+<td>下次执行日期</td>
+</tr>
+<tr>
+<td><code>{ { yesterday_ds } }</code></td>
+<td>执行日期昨天</td>
+</tr>
+<tr>
+<td><code>{ { tomorrow_ds } }</code></td>
+<td>执行日期明天</td>
+</tr>
+<tr>
+<td><code>{ { ts } }</code></td>
+<td>带时间的执行时间</td>
+</tr>
+<tr>
+<td><code>{ { dag } }</code></td>
+<td>DAG对象</td>
+</tr>
+<tr>
+<td><code>{ { task } }</code></td>
+<td>Task对象</td>
+</tr>
+<tr>
+<td><code>{ { params } }</code></td>
+<td>参数</td>
+</tr>
+<tr>
+<td><code>{ { var.value.my_var } }</code></td>
+<td>Variable变量</td>
+</tr>
+<tr>
+<td><code>{ { var.json.my_var.path } }</code></td>
+<td>Json格式的Variable</td>
+</tr>
+<tr>
+<td><code>{ { task_instance_key_str } }</code></td>
+<td>task实例：<code>{dag_id}_{task_id}_{ds}</code></td>
+</tr>
+</tbody></table>
+<p>还能用宏调用函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; &#123;macros.ds_add(ds,<span class="number">7</span>)&#125; &#125;</span><br><span class="line">&#123; &#123;macros.random()&#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Operators"><a href="#4-Operators" class="headerlink" title="4. Operators"></a>4. Operators</h2><h3 id="4-1-MysqlOperator"><a href="#4-1-MysqlOperator" class="headerlink" title="4.1 MysqlOperator"></a>4.1 MysqlOperator</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> airflow.operators.mysql_operator <span class="keyword">import</span> MySqlOperator</span><br><span class="line">t1 = MySqlOperator(task_id=<span class="string">"mysqltest"</span>,sql=<span class="string">"./mysql/test.sql"</span>,mysql_conn_id=<span class="string">'lff_test_mysql'</span>,dag=dag)</span><br></pre></td></tr></table></figure>
+
+<p>sql可以是string，也可以多个string的List，也可以是dags里的相对路径，指向<code>.sql</code>结尾的sql文件。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,69 +335,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://feifanlee.githu.io/2019/06/13/airflow-tutorial/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/03/airflow-setup/" class="archive-article-date">
-  	<time datetime="2019-06-03T07:21:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/03/airflow-setup/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Airflow安装部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/03/airflow-setup/">Airflow安装部署</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">airflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调度</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -286,9 +457,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
