@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>Airflow安装部署 | feifanlee.github.io</title>
+  <title>Tag: 数据治理 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
-<meta name="keywords" content="airflow,调度,大数据,技术">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Airflow安装部署">
-<meta property="og:url" content="http://feifanlee.githu.io/2019/06/03/airflow-setup/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="feifanlee.github.io">
+<meta property="og:url" content="http://feifanlee.githu.io/tags/数据治理/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
-<meta property="og:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-13T02:50:25.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Airflow安装部署">
-<meta name="twitter:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
+<meta name="twitter:title" content="feifanlee.github.io">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -149,176 +144,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-airflow-setup" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Airflow安装部署
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/06/17/atlas-intro/" class="archive-article-date">
+  	<time datetime="2019-06-17T02:15:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/06/17/atlas-intro/">Atlas简介</a>
     </h1>
   
 
-        
-        <a href="/2019/06/03/airflow-setup/" class="archive-article-date">
-  	<time datetime="2019-06-03T07:21:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-环境安装"><a href="#1-环境安装" class="headerlink" title="1. 环境安装"></a>1. 环境安装</h2><h3 id="1-1-Anaconda3"><a href="#1-1-Anaconda3" class="headerlink" title="1.1 Anaconda3"></a>1.1 Anaconda3</h3><p><a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">Anaconda</a>用来管理python环境。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Anaconda3-2019.03-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<p>将conda环境变量加入path中,在<code>~/.bashrc</code>最后添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:~/anaconda3/bin</span><br><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-Redis"><a href="#1-2-Redis" class="headerlink" title="1.2 Redis"></a>1.2 Redis</h3><p><a href="https://redis.io/download" target="_blank" rel="noopener">Redis</a>用来作为消息队列支持airflow分布式部署。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-MySql"><a href="#1-3-MySql" class="headerlink" title="1.3 MySql"></a>1.3 MySql</h3><p>Mysql作为调度与日志的后台。</p>
-<h2 id="2-Airflow安装"><a href="#2-Airflow安装" class="headerlink" title="2. Airflow安装"></a>2. Airflow安装</h2><h3 id="2-1-python包安装"><a href="#2-1-python包安装" class="headerlink" title="2.1 python包安装"></a>2.1 python包安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n airflow pip</span><br><span class="line">conda activate airflow</span><br><span class="line">pip install apache-airflow</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>此时需要预先安装gcc编译器。</p>
-<ul>
-<li>Ubuntu<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get install build-essential</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>如果没有源，改源为阿里的 <code>vim /etc/apt/source.list</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse </span><br><span class="line">&gt;</span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">&gt; </span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse \</span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse \</span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>更新apt-get后重新安装gcc。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get update</span><br><span class="line">&gt; sudo apt-get upgrade</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-</blockquote>
-<h2 id="2-2-Airflow时区调整"><a href="#2-2-Airflow时区调整" class="headerlink" title="2.2 Airflow时区调整"></a>2.2 Airflow时区调整</h2><p>Airflow默认使用UTC时区，包括在webUI中的显示。目的是为了让多时区的协同工作不会遇到问题。<br>想要放弃该功能使用当前地区的的时间显示，目前只能修改源码。</p>
-<ol>
-<li><p>在AIRFLOW_HOME目录下修改airflow.cfg</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">default_timezone</span>=Asia/Shanghai</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入airflow的python安装目录。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$CONDA_HOME</span>/envs/airflow/lib/python3.7/site-packages/airflow</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改airflow/utils/timezone.py，在<code>utc = pendulum.timezone(&#39;UTC&#39;)</code>这行(第27行)代码下添加,</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> configuration <span class="keyword">as</span> conf</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    tz = conf.get(<span class="string">"core"</span>, <span class="string">"default_timezone"</span>)</span><br><span class="line">    <span class="keyword">if</span> tz == <span class="string">"system"</span>:</span><br><span class="line">        utc = pendulum.local_timezone()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        utc = pendulum.timezone(tz)</span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    print(<span class="string">"timezone.py config set failed!"</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>修改utcnow()函数 (在第69行)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#d = dt.datetime.utcnow()  modified to -&gt;</span></span><br><span class="line">d = dt.datetime.now()</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><p>修改airflow/utils/sqlalchemy.py，在<code>utc = pendulum.timezone(‘UTC’)</code> 这行(第37行)代码下添加。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> configuration <span class="keyword">as</span> conf</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    tz = conf.get(<span class="string">"core"</span>, <span class="string">"default_timezone"</span>)</span><br><span class="line">    <span class="keyword">if</span> tz == <span class="string">"system"</span>:</span><br><span class="line">        utc = pendulum.local_timezone()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        utc = pendulum.timezone(tz)</span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    print(<span class="string">"sqlalchemy.py config set failed!"</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改页面右上角时钟，修改airflow/www/templates/admin/master.html(第31行)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var UTCseconds = (x.getTime() + x.getTimezoneOffset()*60*1000);  modified to -&gt;</span></span><br><span class="line"><span class="keyword">var</span> UTCseconds = x.getTime();</span><br><span class="line"></span><br><span class="line"><span class="comment">//"timeFormat":"H:i:s %UTC%",  modified to -&gt;</span></span><br><span class="line"><span class="string">"timeFormat"</span>:<span class="string">"H:i:s"</span>,</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="2-3-配置Mysql-Backend"><a href="#2-3-配置Mysql-Backend" class="headerlink" title="2.3 配置Mysql Backend"></a>2.3 配置Mysql Backend</h3><p>将mysql作为后台数据库代替默认的sqlite。</p>
-<p>下载airflow中mysql相关组件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[mysql]</span><br></pre></td></tr></table></figure>
-
-<p>此时可能会发生mysqlclient无法安装的问题，可以使用anaconda安装解决。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install mysqlclient</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后可能会报错，Openssl相关问题。这是openssl&gt;=1.1.0a后的python包中有bug，安装降级包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install openssl==1.0.2r</span><br></pre></td></tr></table></figure>
-
-<p>之后配置Mysql</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">'airflow'</span>@<span class="string">'%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'airflow'</span>;  </span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;  </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> airflow <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci; </span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> <span class="string">`airflow`</span>.* <span class="keyword">to</span> <span class="string">'airflow'</span>@<span class="string">'%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'airflow'</span>;  </span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：</strong> airflow要求打开全局变量<em>explicit_defaults_for_timestamp</em>。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> @@global.explicit_defaults_for_timestamp=<span class="keyword">on</span>;</span><br></pre></td></tr></table></figure>
-
-<p>修改airflow.cfg中的配置</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sql_alchemy_conn</span> = mysql+mysqldb://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：</strong> 此处不可以用pymysql，会出现<em>pendulum has no object translate</em>问题。</p>
-</blockquote>
-<h3 id="2-4-配置Celery"><a href="#2-4-配置Celery" class="headerlink" title="2.4 配置Celery"></a>2.4 配置Celery</h3><p>这里以redis作为消息队列mysql作为日志后端为例。首先安装依赖包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[celery,redis,mysql]</span><br></pre></td></tr></table></figure>
-
-<p>在<em>airflow.cfg</em>中设置用celery方式运行。</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">executor</span> = CeleryExecutor</span><br></pre></td></tr></table></figure>
-
-<p>配置每个worker能运行的任务数</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">worker_concurrency</span> = <span class="number">32</span></span><br></pre></td></tr></table></figure>
-
-<p>配置消息队列。（<em>redis.conf</em>中记得要设置<code>protected-mode no</code>。）</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">broker_url</span> = redis://localhost:<span class="number">6379</span>/<span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>配置日志后端</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">result_backend</span> = db+mysql://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
-
-<p>具体配置参数参考<a href="http://docs.celeryproject.org/en/latest/index.html" target="_blank" rel="noopener">Celery文档</a>。</p>
-<h3 id="2-5-开启用户登录及密码"><a href="#2-5-开启用户登录及密码" class="headerlink" title="2.5 开启用户登录及密码"></a>2.5 开启用户登录及密码</h3><p>安装airflow密码认证模块。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[password]</span><br></pre></td></tr></table></figure>
-
-<p>在<em>airflow.cfg</em>的<code>webserver</code>块下开启认证并配置认证方式</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ webserver ]</span></span><br><span class="line"><span class="attr">authenticate</span> = <span class="literal">True</span></span><br><span class="line"><span class="attr">auth_backend</span> = airflow.contrib.auth.backends.password_auth</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：</strong> 是在<code>webserver</code>块下自己新增<code>auth_backend</code>，而不是<code>api</code>块下原本已经有的。</p>
-</blockquote>
-<p>运行python代码新增用户。（目前webui添加用户无法使用密码）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> airflow </span><br><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> models, settings </span><br><span class="line"><span class="keyword">from</span> airflow.contrib.auth.backends.password_auth <span class="keyword">import</span> PasswordUser </span><br><span class="line">user = PasswordUser(models.User()) </span><br><span class="line">user.username = <span class="string">'lifeifan'</span> </span><br><span class="line">user.email = <span class="string">'feifanvivian@sina.com'</span> </span><br><span class="line">user.password = <span class="string">'lifeifan'</span> </span><br><span class="line"><span class="comment">#user.superuser = 1</span></span><br><span class="line">session = settings.Session() </span><br><span class="line">session.add(user) </span><br><span class="line">session.commit() </span><br><span class="line">session.close()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>也可以直接在backend的数据库中的users表中添加修改</p>
-</blockquote>
-<h2 id="3-Airflow的使用"><a href="#3-Airflow的使用" class="headerlink" title="3. Airflow的使用"></a>3. Airflow的使用</h2><h3 id="3-1-启动Airflow"><a href="#3-1-启动Airflow" class="headerlink" title="3.1 启动Airflow"></a>3.1 启动Airflow</h3><p>初始化DB</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow initdb</span><br></pre></td></tr></table></figure>
-
-<p>运行webUI</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow webserver [-p 8080]  [-D]</span><br></pre></td></tr></table></figure>
-
-<p>开启调度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow scheduler [-D]</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-2-启动Celery"><a href="#3-2-启动Celery" class="headerlink" title="3.2 启动Celery"></a>3.2 启动Celery</h3><p>在各个工作节点上启动worker。（<strong>注意：</strong> 需要先在工作节点上按第二节安装相同环境、配置及DAG！）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow worker [-D]</span><br></pre></td></tr></table></figure>
-
-<p>启动监控worker状态的flower</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow flower [-D]</span><br></pre></td></tr></table></figure>
-
-<p>之后可以在5555端口打开flower界面。</p>
-<blockquote>
-<p>由于目前airflow自带flower无法打开，不知道是否为当前环境问题，可以尝试自己安装celery和flower规避该问题。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda create -n celery pip</span><br><span class="line">&gt; conda activate celery</span><br><span class="line">&gt; pip install celery,flower</span><br><span class="line">&gt; flower -b redis://127.0.0.1/0</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">airflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调度</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
         		</li>
@@ -326,68 +185,27 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据治理</a>
+        		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/06/13/airflow-tutorial/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Airflow使用指北
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/06/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -410,9 +228,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

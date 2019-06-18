@@ -6,20 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>Airflow安装部署 | feifanlee.github.io</title>
+  <title>Atlas简介 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
-<meta name="keywords" content="airflow,调度,大数据,技术">
+  <meta name="description" content="Atlas将Hadoop生态中的元数据及各个元数据之间的关系，以图的方式存储并管理。 1. 简介">
+<meta name="keywords" content="大数据,技术,数据治理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Airflow安装部署">
-<meta property="og:url" content="http://feifanlee.githu.io/2019/06/03/airflow-setup/index.html">
+<meta property="og:title" content="Atlas简介">
+<meta property="og:url" content="http://feifanlee.githu.io/2019/06/17/atlas-intro/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
-<meta property="og:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
+<meta property="og:description" content="Atlas将Hadoop生态中的元数据及各个元数据之间的关系，以图的方式存储并管理。 1. 简介">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-13T02:50:25.424Z">
+<meta property="og:image" content="http://atlas.apache.org/images/twiki/architecture.png">
+<meta property="og:image" content="http://atlas.apache.org/images/twiki/search-basic-hive_column-PII.png">
+<meta property="og:image" content="http://atlas.apache.org/images/twiki/search-basic-hive_table-customers.png">
+<meta property="og:image" content="http://atlas.apache.org/images/markdown/term_details.png">
+<meta property="og:image" content="http://atlas.apache.org/images/markdown/entity_details_add_term.png">
+<meta property="og:image" content="http://atlas.apache.org/images/markdown/term_details_with_classification.png">
+<meta property="og:image" content="http://atlas.apache.org/images/markdown/entity_assigned_term_with_tag.png">
+<meta property="og:image" content="http://atlas.apache.org/images/markdown/term_search.png">
+<meta property="og:updated_time" content="2019-06-18T09:24:00.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Airflow安装部署">
-<meta name="twitter:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
+<meta name="twitter:title" content="Atlas简介">
+<meta name="twitter:description" content="Atlas将Hadoop生态中的元数据及各个元数据之间的关系，以图的方式存储并管理。 1. 简介">
+<meta name="twitter:image" content="http://atlas.apache.org/images/twiki/architecture.png">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -149,156 +158,142 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-airflow-setup" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-atlas-intro" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Airflow安装部署
+      Atlas简介
     </h1>
   
 
         
-        <a href="/2019/06/03/airflow-setup/" class="archive-article-date">
-  	<time datetime="2019-06-03T07:21:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
+        <a href="/2019/06/17/atlas-intro/" class="archive-article-date">
+  	<time datetime="2019-06-17T02:15:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-环境安装"><a href="#1-环境安装" class="headerlink" title="1. 环境安装"></a>1. 环境安装</h2><h3 id="1-1-Anaconda3"><a href="#1-1-Anaconda3" class="headerlink" title="1.1 Anaconda3"></a>1.1 Anaconda3</h3><p><a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">Anaconda</a>用来管理python环境。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Anaconda3-2019.03-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
+        <p>Atlas将Hadoop生态中的元数据及各个元数据之间的关系，以图的方式存储并管理。</p>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p><img src="http://atlas.apache.org/images/twiki/architecture.png" alt="atlas-arch-img" title="Atlas架构"></p>
 <a id="more"></a>
-<p>将conda环境变量加入path中,在<code>~/.bashrc</code>最后添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:~/anaconda3/bin</span><br><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-Redis"><a href="#1-2-Redis" class="headerlink" title="1.2 Redis"></a>1.2 Redis</h3><p><a href="https://redis.io/download" target="_blank" rel="noopener">Redis</a>用来作为消息队列支持airflow分布式部署。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-MySql"><a href="#1-3-MySql" class="headerlink" title="1.3 MySql"></a>1.3 MySql</h3><p>Mysql作为调度与日志的后台。</p>
-<h2 id="2-Airflow安装"><a href="#2-Airflow安装" class="headerlink" title="2. Airflow安装"></a>2. Airflow安装</h2><h3 id="2-1-python包安装"><a href="#2-1-python包安装" class="headerlink" title="2.1 python包安装"></a>2.1 python包安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n airflow pip</span><br><span class="line">conda activate airflow</span><br><span class="line">pip install apache-airflow</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>此时需要预先安装gcc编译器。</p>
+<h3 id="1-1-Core"><a href="#1-1-Core" class="headerlink" title="1.1 Core"></a>1.1 Core</h3><ul>
+<li>Type System 类型系统：Atlas可以为一个Metadata对象定义一个model，model包含各个types，types的实例叫做entity。值得注意的是，Atlas中原生模型中允许同时定义技术metadata和业务metadata，还可以用atlas的特性定义二者的富关联关系。</li>
+<li>图引擎：Atlas内部用图的模型维护metadata对象。这让模型弹性且能搞笑处理metadata对象间的富关系。图引擎解析type至entity并持久化，创建索引便于搜索。（使用JanusGraph）</li>
+<li>吸收/导出：导入导出metadata。导出将metadata变化作为事件暴露，因此可以实时处理。</li>
+</ul>
+<h3 id="1-2-集成"><a href="#1-2-集成" class="headerlink" title="1.2 集成"></a>1.2 集成</h3><p>用户可用两种方式管理数据。</p>
 <ul>
-<li>Ubuntu<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get install build-essential</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<li>API：可以用RestAPI创建、查询、发现type和entity。</li>
+<li>消息：可以用Kafka消息队列集成Atlas。比如发送meatadata对象给Atlas或者Atlas修改metadata后让应用去使用。</li>
+</ul>
+<h3 id="1-3-元数据源"><a href="#1-3-元数据源" class="headerlink" title="1.3 元数据源"></a>1.3 元数据源</h3><p>Atlas支持的数据源包括：</p>
+<ul>
+<li>HBase</li>
+<li>Hive</li>
+<li>Sqoop</li>
+<li>Storm</li>
+<li>Kafka</li>
+</ul>
+<h3 id="1-4-应用"><a href="#1-4-应用" class="headerlink" title="1.4 应用"></a>1.4 应用</h3><p>Atlas自带应用包括：</p>
+<ul>
+<li>Atlas管理UI： 网站UI，可以用来发现并标注metadata。可以用界面和类sql查询metadata的type和对象。</li>
+<li>Tag Based Policies（基于标签的策略）：使用<a href="http://ranger.apache.org/" target="_blank" rel="noopener">ApacheRager</a>管理Hadoop生态里的安全。（类比sentry@Cloudera，hortonworks主推，支持hive列级授权和审计）</li>
+</ul>
+<h2 id="2-Type-System"><a href="#2-Type-System" class="headerlink" title="2. Type System"></a>2. Type System</h2><p>Type定义形式如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Name:</span>         <span class="string">hive_table</span></span><br><span class="line"><span class="attr">TypeCategory:</span> <span class="string">Entity</span></span><br><span class="line"><span class="attr">SuperTypes:</span>   <span class="string">DataSet</span></span><br><span class="line"><span class="attr">Attributes:</span></span><br><span class="line"><span class="attr">    name:</span>             <span class="string">string</span></span><br><span class="line"><span class="attr">    db:</span>               <span class="string">hive_db</span></span><br><span class="line"><span class="attr">    owner:</span>            <span class="string">string</span></span><br><span class="line"><span class="attr">    createTime:</span>       <span class="string">date</span></span><br><span class="line"><span class="attr">    lastAccessTime:</span>   <span class="string">date</span></span><br><span class="line"><span class="attr">    comment:</span>          <span class="string">string</span></span><br><span class="line"><span class="attr">    retention:</span>        <span class="string">int</span></span><br><span class="line"><span class="attr">    sd:</span>               <span class="string">hive_storagedesc</span></span><br><span class="line"><span class="attr">    partitionKeys:</span>    <span class="string">array&lt;hive_column&gt;</span></span><br><span class="line"><span class="attr">    aliases:</span>          <span class="string">array&lt;string&gt;</span></span><br><span class="line"><span class="attr">    columns:</span>          <span class="string">array&lt;hive_column&gt;</span></span><br><span class="line"><span class="attr">    parameters:</span>       <span class="string">map&lt;string,string&gt;</span></span><br><span class="line"><span class="attr">    viewOriginalText:</span> <span class="string">string</span></span><br><span class="line"><span class="attr">    viewExpandedText:</span> <span class="string">string</span></span><br><span class="line"><span class="attr">    tableType:</span>        <span class="string">string</span></span><br><span class="line"><span class="attr">    temporary:</span>        <span class="string">boolean</span></span><br></pre></td></tr></table></figure>
+
+<p>Entity定义形式如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">guid:</span>     <span class="string">"9ba387dd-fa76-429c-b791-ffc338d3c91f"</span></span><br><span class="line"><span class="attr">typeName:</span> <span class="string">"hive_table"</span></span><br><span class="line"><span class="attr">status:</span>   <span class="string">"ACTIVE"</span></span><br><span class="line"><span class="attr">values:</span></span><br><span class="line"><span class="attr">    name:</span>             <span class="string">“customers”</span></span><br><span class="line"><span class="attr">    db:</span>               <span class="string">&#123;</span> <span class="string">"guid"</span><span class="string">:</span> <span class="string">"b42c6cfc-c1e7-42fd-a9e6-890e0adf33bc"</span><span class="string">,</span> <span class="string">"typeName"</span><span class="string">:</span> <span class="string">"hive_db"</span> <span class="string">&#125;</span></span><br><span class="line"><span class="attr">    owner:</span>            <span class="string">“admin”</span></span><br><span class="line"><span class="attr">    createTime:</span>       <span class="number">1490761686029</span></span><br><span class="line"><span class="attr">    updateTime:</span>       <span class="number">1516298102877</span></span><br><span class="line"><span class="attr">    comment:</span>          <span class="literal">null</span></span><br><span class="line"><span class="attr">    retention:</span>        <span class="number">0</span></span><br><span class="line"><span class="attr">    sd:</span>               <span class="string">&#123;</span> <span class="string">"guid"</span><span class="string">:</span> <span class="string">"ff58025f-6854-4195-9f75-3a3058dd8dcf"</span><span class="string">,</span> <span class="string">"typeName"</span><span class="string">:</span> <span class="string">"hive_storagedesc"</span> <span class="string">&#125;</span></span><br><span class="line"><span class="attr">    partitionKeys:</span>    <span class="literal">null</span></span><br><span class="line"><span class="attr">    aliases:</span>          <span class="literal">null</span></span><br><span class="line"><span class="attr">    columns:</span>          <span class="string">[</span> <span class="string">&#123;</span> <span class="string">"guid"</span><span class="string">:</span> <span class="string">""</span><span class="number">65e2204</span><span class="string">f-6a23-4130-934a-9679af6a211f",</span> <span class="string">"typeName"</span><span class="string">:</span> <span class="string">"hive_column"</span> <span class="string">&#125;,</span> <span class="string">&#123;</span> <span class="string">"guid"</span><span class="string">:</span> <span class="string">""</span><span class="string">d726de70-faca-46fb-9c99-cf04f6b579a6",</span> <span class="string">"typeName"</span><span class="string">:</span> <span class="string">"hive_column"</span> <span class="string">&#125;,</span> <span class="string">...]</span></span><br><span class="line"><span class="attr">    parameters:</span>       <span class="string">&#123;</span> <span class="string">"transient_lastDdlTime"</span><span class="string">:</span> <span class="string">"1466403208"</span><span class="string">&#125;</span></span><br><span class="line"><span class="attr">    viewOriginalText:</span> <span class="literal">null</span></span><br><span class="line"><span class="attr">    viewExpandedText:</span> <span class="literal">null</span></span><br><span class="line"><span class="attr">    tableType:</span>        <span class="string">“MANAGED_TABLE”</span></span><br><span class="line"><span class="attr">    temporary:</span>        <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>每个实例都有个唯一guid。</li>
+<li>每个entity都有一个已定义的type。</li>
+<li>entity的值是个map。</li>
+</ul>
+<p>系统自带的类型</p>
+<ul>
+<li>Referenceable: 所有entity</li>
+<li>Asset: 继承Referenceable，有name,description和owner。</li>
+<li>Infrastructure：继承Asset，可以用来作为基建元数据的类型，比如集群，hosts等。</li>
+<li>Dataset：集成Asset。用来表示存储数据的类型，比如Hive_tables，hbase_tables等。</li>
+<li>Process：继承Asset。用来表示数据转化操作。</li>
+</ul>
+<h2 id="3-搜索"><a href="#3-搜索" class="headerlink" title="3. 搜索"></a>3. 搜索</h2><p>搜索可以搜一个entity的type名字，并支持通过entity的attribute属性过滤和分类。</p>
+<p>查询的参数json像如下这般：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"typeName"</span>:               <span class="string">"hive_column"</span>,</span><br><span class="line">  <span class="attr">"excludeDeletedEntities"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"classification"</span>:         <span class="string">"PII"</span>,</span><br><span class="line">  <span class="attr">"query"</span>:                  <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"offset"</span>:                 <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"limit"</span>:                  <span class="number">25</span>,</span><br><span class="line">  <span class="attr">"entityFilters"</span>:          &#123;  &#125;,</span><br><span class="line">  <span class="attr">"tagFilters"</span>:             &#123; &#125;,</span><br><span class="line">  <span class="attr">"attributes"</span>:             [ <span class="string">"table"</span>, <span class="string">"qualifiedName"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查询界面中如下：<br><img src="http://atlas.apache.org/images/twiki/search-basic-hive_column-PII.png" alt="query-ui1" title="query-ui1"><br>过滤的json如下:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"typeName"</span>:               <span class="string">"hive_table"</span>,</span><br><span class="line">  <span class="attr">"excludeDeletedEntities"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"offset"</span>:                 <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"limit"</span>:                  <span class="number">25</span>,</span><br><span class="line">  <span class="attr">"entityFilters"</span>: &#123;</span><br><span class="line">     <span class="attr">"condition"</span>: <span class="string">"OR"</span>,</span><br><span class="line">     <span class="attr">"criterion"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="attr">"attributeName"</span>:  <span class="string">"name"</span>,</span><br><span class="line">           <span class="attr">"operator"</span>:       <span class="string">"contains"</span>,</span><br><span class="line">           <span class="attr">"attributeValue"</span>: <span class="string">"customers"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="attr">"attributeName"</span>:  <span class="string">"name"</span>,</span><br><span class="line">           <span class="attr">"operator"</span>:       <span class="string">"contains"</span>,</span><br><span class="line">           <span class="attr">"attributeValue"</span>: <span class="string">"provider"</span></span><br><span class="line">        &#125;</span><br><span class="line">     ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"attributes"</span>: [ <span class="string">"db"</span>, <span class="string">"qualifiedName"</span> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>过滤界面如下：<br><img src="http://atlas.apache.org/images/twiki/search-basic-hive_table-customers.png" alt="filter-ui1" title="filter-ui1"></p>
+<p>查询时还能使用高级查询，用DSL语言（sql-like)。在UI中选择Advanced，然后输入查询语句，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from Table where name = 'time_dim'</span><br><span class="line">from Table where name = ["customer_dim", "time_dim"]</span><br><span class="line">from Table <span class="keyword">select</span> owner, <span class="keyword">name</span>, qualifiedName</span><br><span class="line">DB <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">"R???rt?*"</span></span><br><span class="line"><span class="keyword">Column</span> <span class="keyword">select</span> <span class="keyword">count</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-术语表"><a href="#4-术语表" class="headerlink" title="4. 术语表"></a>4. 术语表</h2><p>作用：</p>
+<ul>
+<li>定义术语词汇。</li>
+<li>关联各个术语。</li>
+<li>映射asset资产到术语。</li>
+<li>组织分类术语，添加术语上下文。</li>
+<li>分类术语，添加层级关系。</li>
+<li>将术语管理和元数据管理分离。</li>
+</ul>
+<p>UI功能:</p>
+<ul>
+<li>创建术语及分类</li>
+<li>创建不同术语之间的关系。</li>
+<li>用层级中组织分类。</li>
+<li>分配术语到entity。</li>
+<li>用关联术语搜索entity。</li>
+</ul>
+<p>UI分为术语栏和分类栏。<br>术语栏创建、删除、更新或分类术语或术语间的关系。<br>分类栏创建、删除或更新分类和子分类，并关联术语到分类。<br><img src="http://atlas.apache.org/images/markdown/term_details.png" alt="glossary1" title="glossary1"><br><img src="http://atlas.apache.org/images/markdown/entity_details_add_term.png" alt="glossary2" title="glossary2"><br><img src="http://atlas.apache.org/images/markdown/term_details_with_classification.png" alt="glossary3" title="glossary3"><br><img src="http://atlas.apache.org/images/markdown/entity_assigned_term_with_tag.png" alt="glossary4" title="glossary4"><br><img src="http://atlas.apache.org/images/markdown/term_search.png" alt="glossary5" title="glossary5"></p>
+<h2 id="6-其他元数据"><a href="#6-其他元数据" class="headerlink" title="6. 其他元数据"></a>6. 其他元数据</h2><ul>
+<li>安全</li>
+<li>权限</li>
+</ul>
+<h2 id="5-Hooks-amp-Bridges"><a href="#5-Hooks-amp-Bridges" class="headerlink" title="5. Hooks &amp; Bridges"></a>5. Hooks &amp; Bridges</h2><h3 id="5-1-Hive"><a href="#5-1-Hive" class="headerlink" title="5.1 Hive"></a>5.1 Hive</h3><p>Entiy types:</p>
+<ul>
+<li>hive_db</li>
+<li>hive_table</li>
+<li>hive_column</li>
+<li>hive_storagedesc</li>
+<li>hive_process</li>
+<li>hive_column_lineage<br>Enum types:</li>
+<li>hive_principal_type：USER, ROLE, GROUP<br>Struct types:</li>
+<li>hive_order：col,order</li>
+<li>hive_serde：name, serializationLib, parameters</li>
+</ul>
+<p>配置流程</p>
+<ul>
+<li><p>Set-up Atlas hook in hive-site.xml by adding the following:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.exec.post.hooks<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>org.apache.atlas.hive.hook.HiveHook<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>untar apache-atlas-${project.version}-hive-hook.tar.gz</p>
+</li>
+<li><p>cd apache-atlas-hive-hook-${project.version}</p>
+</li>
+<li><p>Copy entire contents of folder apache-atlas-hive-hook-${project.version}/hook/hive to <atlas package>/hook/hive</atlas></p>
+</li>
+<li><p>Add ‘export HIVE_AUX_JARS_PATH=<atlas package>/hook/hive’ in hive-env.sh of your hive configuration</atlas></p>
+</li>
+<li><p>Copy <atlas-conf>/atlas-application.properties to the hive conf directory.</atlas-conf></p>
 </li>
 </ul>
-</blockquote>
-<blockquote>
-<p>如果没有源，改源为阿里的 <code>vim /etc/apt/source.list</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse </span><br><span class="line">&gt;</span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">&gt; </span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse \</span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse \</span><br><span class="line">&gt; deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse \</span><br><span class="line">&gt; deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>更新apt-get后重新安装gcc。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get update</span><br><span class="line">&gt; sudo apt-get upgrade</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-</blockquote>
-<h2 id="2-2-Airflow时区调整"><a href="#2-2-Airflow时区调整" class="headerlink" title="2.2 Airflow时区调整"></a>2.2 Airflow时区调整</h2><p>Airflow默认使用UTC时区，包括在webUI中的显示。目的是为了让多时区的协同工作不会遇到问题。<br>想要放弃该功能使用当前地区的的时间显示，目前只能修改源码。</p>
-<ol>
-<li><p>在AIRFLOW_HOME目录下修改airflow.cfg</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">default_timezone</span>=Asia/Shanghai</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入airflow的python安装目录。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$CONDA_HOME</span>/envs/airflow/lib/python3.7/site-packages/airflow</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改airflow/utils/timezone.py，在<code>utc = pendulum.timezone(&#39;UTC&#39;)</code>这行(第27行)代码下添加,</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> configuration <span class="keyword">as</span> conf</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    tz = conf.get(<span class="string">"core"</span>, <span class="string">"default_timezone"</span>)</span><br><span class="line">    <span class="keyword">if</span> tz == <span class="string">"system"</span>:</span><br><span class="line">        utc = pendulum.local_timezone()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        utc = pendulum.timezone(tz)</span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    print(<span class="string">"timezone.py config set failed!"</span>)</span><br></pre></td></tr></table></figure>
+<p>最后导入数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;atlas package&gt;/hook-bin/import-hive.sh</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>修改utcnow()函数 (在第69行)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#d = dt.datetime.utcnow()  modified to -&gt;</span></span><br><span class="line">d = dt.datetime.now()</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><p>修改airflow/utils/sqlalchemy.py，在<code>utc = pendulum.timezone(‘UTC’)</code> 这行(第37行)代码下添加。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> configuration <span class="keyword">as</span> conf</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    tz = conf.get(<span class="string">"core"</span>, <span class="string">"default_timezone"</span>)</span><br><span class="line">    <span class="keyword">if</span> tz == <span class="string">"system"</span>:</span><br><span class="line">        utc = pendulum.local_timezone()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        utc = pendulum.timezone(tz)</span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    print(<span class="string">"sqlalchemy.py config set failed!"</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改页面右上角时钟，修改airflow/www/templates/admin/master.html(第31行)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var UTCseconds = (x.getTime() + x.getTimezoneOffset()*60*1000);  modified to -&gt;</span></span><br><span class="line"><span class="keyword">var</span> UTCseconds = x.getTime();</span><br><span class="line"></span><br><span class="line"><span class="comment">//"timeFormat":"H:i:s %UTC%",  modified to -&gt;</span></span><br><span class="line"><span class="string">"timeFormat"</span>:<span class="string">"H:i:s"</span>,</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="2-3-配置Mysql-Backend"><a href="#2-3-配置Mysql-Backend" class="headerlink" title="2.3 配置Mysql Backend"></a>2.3 配置Mysql Backend</h3><p>将mysql作为后台数据库代替默认的sqlite。</p>
-<p>下载airflow中mysql相关组件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[mysql]</span><br></pre></td></tr></table></figure>
-
-<p>此时可能会发生mysqlclient无法安装的问题，可以使用anaconda安装解决。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install mysqlclient</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后可能会报错，Openssl相关问题。这是openssl&gt;=1.1.0a后的python包中有bug，安装降级包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install openssl==1.0.2r</span><br></pre></td></tr></table></figure>
-
-<p>之后配置Mysql</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">'airflow'</span>@<span class="string">'%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'airflow'</span>;  </span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;  </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> airflow <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci; </span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> <span class="string">`airflow`</span>.* <span class="keyword">to</span> <span class="string">'airflow'</span>@<span class="string">'%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'airflow'</span>;  </span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：</strong> airflow要求打开全局变量<em>explicit_defaults_for_timestamp</em>。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> @@global.explicit_defaults_for_timestamp=<span class="keyword">on</span>;</span><br></pre></td></tr></table></figure>
-
-<p>修改airflow.cfg中的配置</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sql_alchemy_conn</span> = mysql+mysqldb://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：</strong> 此处不可以用pymysql，会出现<em>pendulum has no object translate</em>问题。</p>
-</blockquote>
-<h3 id="2-4-配置Celery"><a href="#2-4-配置Celery" class="headerlink" title="2.4 配置Celery"></a>2.4 配置Celery</h3><p>这里以redis作为消息队列mysql作为日志后端为例。首先安装依赖包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[celery,redis,mysql]</span><br></pre></td></tr></table></figure>
-
-<p>在<em>airflow.cfg</em>中设置用celery方式运行。</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">executor</span> = CeleryExecutor</span><br></pre></td></tr></table></figure>
-
-<p>配置每个worker能运行的任务数</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">worker_concurrency</span> = <span class="number">32</span></span><br></pre></td></tr></table></figure>
-
-<p>配置消息队列。（<em>redis.conf</em>中记得要设置<code>protected-mode no</code>。）</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">broker_url</span> = redis://localhost:<span class="number">6379</span>/<span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>配置日志后端</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">result_backend</span> = db+mysql://airflow:airflow@<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">33060</span>/airflow</span><br></pre></td></tr></table></figure>
-
-<p>具体配置参数参考<a href="http://docs.celeryproject.org/en/latest/index.html" target="_blank" rel="noopener">Celery文档</a>。</p>
-<h3 id="2-5-开启用户登录及密码"><a href="#2-5-开启用户登录及密码" class="headerlink" title="2.5 开启用户登录及密码"></a>2.5 开启用户登录及密码</h3><p>安装airflow密码认证模块。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[password]</span><br></pre></td></tr></table></figure>
-
-<p>在<em>airflow.cfg</em>的<code>webserver</code>块下开启认证并配置认证方式</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ webserver ]</span></span><br><span class="line"><span class="attr">authenticate</span> = <span class="literal">True</span></span><br><span class="line"><span class="attr">auth_backend</span> = airflow.contrib.auth.backends.password_auth</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：</strong> 是在<code>webserver</code>块下自己新增<code>auth_backend</code>，而不是<code>api</code>块下原本已经有的。</p>
-</blockquote>
-<p>运行python代码新增用户。（目前webui添加用户无法使用密码）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> airflow </span><br><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> models, settings </span><br><span class="line"><span class="keyword">from</span> airflow.contrib.auth.backends.password_auth <span class="keyword">import</span> PasswordUser </span><br><span class="line">user = PasswordUser(models.User()) </span><br><span class="line">user.username = <span class="string">'lifeifan'</span> </span><br><span class="line">user.email = <span class="string">'feifanvivian@sina.com'</span> </span><br><span class="line">user.password = <span class="string">'lifeifan'</span> </span><br><span class="line"><span class="comment">#user.superuser = 1</span></span><br><span class="line">session = settings.Session() </span><br><span class="line">session.add(user) </span><br><span class="line">session.commit() </span><br><span class="line">session.close()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>也可以直接在backend的数据库中的users表中添加修改</p>
-</blockquote>
-<h2 id="3-Airflow的使用"><a href="#3-Airflow的使用" class="headerlink" title="3. Airflow的使用"></a>3. Airflow的使用</h2><h3 id="3-1-启动Airflow"><a href="#3-1-启动Airflow" class="headerlink" title="3.1 启动Airflow"></a>3.1 启动Airflow</h3><p>初始化DB</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow initdb</span><br></pre></td></tr></table></figure>
-
-<p>运行webUI</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow webserver [-p 8080]  [-D]</span><br></pre></td></tr></table></figure>
-
-<p>开启调度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow scheduler [-D]</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-2-启动Celery"><a href="#3-2-启动Celery" class="headerlink" title="3.2 启动Celery"></a>3.2 启动Celery</h3><p>在各个工作节点上启动worker。（<strong>注意：</strong> 需要先在工作节点上按第二节安装相同环境、配置及DAG！）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow worker [-D]</span><br></pre></td></tr></table></figure>
-
-<p>启动监控worker状态的flower</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airflow flower [-D]</span><br></pre></td></tr></table></figure>
-
-<p>之后可以在5555端口打开flower界面。</p>
-<blockquote>
-<p>由于目前airflow自带flower无法打开，不知道是否为当前环境问题，可以尝试自己安装celery和flower规避该问题。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda create -n celery pip</span><br><span class="line">&gt; conda activate celery</span><br><span class="line">&gt; pip install celery,flower</span><br><span class="line">&gt; flower -b redis://127.0.0.1/0</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
+<h3 id="5-2-Sqoop"><a href="#5-2-Sqoop" class="headerlink" title="5.2 Sqoop"></a>5.2 Sqoop</h3><p>Entity types:</p>
+<ul>
+<li>sqoop_process: Process</li>
+<li>sqoop_dbdatastore: DataSet<br>Enum types:</li>
+<li>sqoop_operation_type: IMPORT,EXPORT,EVAL</li>
+<li>sqoop_dbstore_usage: TABLE,QUERY,PROCEDURE,OTHER<br>目前只支持HiveImport操作</li>
+</ul>
 
       
 
@@ -312,19 +307,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">airflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调度</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据治理</a>
         		</li>
       		
 		</ul>
@@ -343,18 +334,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/13/airflow-tutorial/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Airflow使用指北
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/06/13/airflow-tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Airflow使用指北</div>
       <i class="icon-circle-right"></i>
     </a>
   
