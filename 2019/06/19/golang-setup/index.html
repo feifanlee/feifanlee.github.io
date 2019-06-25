@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>Tag: 技术 | feifanlee.github.io</title>
+  <title>GO语言入门 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="feifanlee.github.io">
-<meta property="og:url" content="http://feifanlee.githu.io/tags/技术/index.html">
+  <meta name="description" content="1. 安装Golang终于有了墙内的官网。https://golang.google.cn/">
+<meta name="keywords" content="技术,GO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GO语言入门">
+<meta property="og:url" content="http://feifanlee.githu.io/2019/06/19/golang-setup/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
+<meta property="og:description" content="1. 安装Golang终于有了墙内的官网。https://golang.google.cn/">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-25T03:29:49.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="feifanlee.github.io">
+<meta name="twitter:title" content="GO语言入门">
+<meta name="twitter:description" content="1. 安装Golang终于有了墙内的官网。https://golang.google.cn/">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -144,86 +149,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-golang-setup" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/25/distributed-lock-microservice/" class="archive-article-date">
-  	<time datetime="2019-06-25T05:45:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/25/distributed-lock-microservice/">分布式锁与配置中心与服务发现</a>
+    <h1 class="article-title" itemprop="name">
+      GO语言入门
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">锁</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/golang-setup/" class="archive-article-date">
+        
+        <a href="/2019/06/19/golang-setup/" class="archive-article-date">
   	<time datetime="2019-06-19T07:56:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/golang-setup/">GO语言入门</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>Golang终于有了墙内的官网。<br><a href="https://golang.google.cn/" target="_blank" rel="noopener">https://golang.google.cn/</a></p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<ul>
+<li><p>Windows安装<br><br>msi安装后,配置GoPath。<br>电脑-&gt;属性-&gt;环境变量-&gt;GOPATH</p>
+</li>
+<li><p>Linux安装<br></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf golang-xxxxx.tar.gz</span><br><span class="line">vim ~/.profile</span><br><span class="line"><span class="built_in">export</span> GOROOT=&lt;go path&gt;</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOROOT</span>/bin</span><br><span class="line"><span class="built_in">export</span> GOPATH=&lt;go bin path&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="2-建立项目"><a href="#2-建立项目" class="headerlink" title="2. 建立项目"></a>2. 建立项目</h2><ul>
+<li>使用go module<br><br>建立项目目录<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir &lt;pro-name&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;pro-name&gt;</span><br><span class="line">go mod init &lt;pro-name&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>在go.mod中添加golang在github中的镜像。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">replace (</span><br><span class="line">	cloud.google.com/<span class="keyword">go</span> =&gt; github.com/googleapis/google-cloud-<span class="keyword">go</span> v0<span class="number">.40</span><span class="number">.0</span></span><br><span class="line">	golang.org/x/crypto =&gt; github.com/golang/crypto v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190618222545</span>-ea8f1a30c443</span><br><span class="line">	golang.org/x/exp =&gt; github.com/golang/exp v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190510132918</span>-efd6b22b2522</span><br><span class="line">	golang.org/x/genproto =&gt; github.com/googleapis/<span class="keyword">go</span>-genproto v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190611190212</span>-a7e196e89fd3</span><br><span class="line">	golang.org/x/grpc =&gt; github.com/grpc/grpc-<span class="keyword">go</span> v1<span class="number">.21</span><span class="number">.1</span></span><br><span class="line">	golang.org/x/image =&gt; github.com/golang/image v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190618124811</span><span class="number">-92942e4437</span>e2</span><br><span class="line">	golang.org/x/lint =&gt; github.com/golang/lint v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190409202823</span><span class="number">-959</span>b441ac422</span><br><span class="line">	golang.org/x/mobile =&gt; github.com/golang/mobile v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190607214518</span><span class="number">-6f</span>a95d984e88</span><br><span class="line">	golang.org/x/net =&gt; github.com/golang/net v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190619014844</span>-b5b0513f8c1b</span><br><span class="line">	golang.org/x/oauth2 =&gt; github.com/golang/oauth2 v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190604053449</span><span class="number">-0f</span>29369cfe45</span><br><span class="line">	golang.org/x/sync =&gt; github.com/golang/sync v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190423024810</span><span class="number">-112230192</span>c58</span><br><span class="line">	golang.org/x/sys =&gt; github.com/golang/sys v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190620070143</span><span class="number">-6f</span>217b454f45</span><br><span class="line">	golang.org/x/text =&gt; github.com/golang/text v0<span class="number">.3</span><span class="number">.2</span></span><br><span class="line">	golang.org/x/time =&gt; github.com/golang/time v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190308202827</span><span class="number">-9d</span>24e82272b4</span><br><span class="line">	golang.org/x/tools =&gt; github.com/golang/tools v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190619215442</span><span class="number">-4</span>adf7a708c2d</span><br><span class="line">	google.golang.org/api =&gt; github.com/googleapis/google-api-<span class="keyword">go</span>-client v0<span class="number">.6</span><span class="number">.0</span></span><br><span class="line">	google.golang.org/appengine =&gt; github.com/golang/appengine v1<span class="number">.6</span><span class="number">.1</span></span><br><span class="line">	google.golang.org/genproto =&gt; github.com/googleapis/<span class="keyword">go</span>-genproto v0<span class="number">.0</span><span class="number">.0</span><span class="number">-20190611190212</span>-a7e196e89fd3</span><br><span class="line">	google.golang.org/grpc =&gt; github.com/grpc/grpc-<span class="keyword">go</span> v1<span class="number">.21</span><span class="number">.1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>下载依赖包，GoModule会自动编译代码找出import的依赖包并添加的go.mod中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
+
+<p>编译结果。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-语法"><a href="#3-语法" class="headerlink" title="3. 语法"></a>3. 语法</h2><p>//TODO</p>
+<h2 id="4-Orm"><a href="#4-Orm" class="headerlink" title="4. Orm"></a>4. Orm</h2><ul>
+<li>使用xorm实现</li>
+</ul>
+<p>创建连接</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mysql</span></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">    <span class="string">"github.com/go-xorm/xorm"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> engine *xorm.Engine</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> err error</span><br><span class="line">    engine, err = xorm.NewEngine(<span class="string">"mysql"</span>, <span class="string">"root:123@/test?charset=utf8"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqlite</span></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">"github.com/mattn/go-sqlite3"</span></span><br><span class="line">    <span class="string">"github.com/go-xorm/xorm"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> engine *xorm.Engine</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> err error</span><br><span class="line">    engine, err = xorm.NewEngine(<span class="string">"sqlite3"</span>, <span class="string">"./test.db"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CRUD</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get单条</span></span><br><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">has, err := engine.Where(<span class="string">"name=?"</span>, <span class="string">"xlw"</span>).Get(user)</span><br><span class="line"></span><br><span class="line">user := &amp;User&#123;Id:<span class="number">1</span>&#125;</span><br><span class="line">has, err := engine.Get(user)</span><br><span class="line"></span><br><span class="line"><span class="comment">//find多条</span></span><br><span class="line">everyone := <span class="built_in">make</span>([]Userinfo, <span class="number">0</span>)</span><br><span class="line">err := engine.Find(&amp;everyone)</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入</span></span><br><span class="line">user := User&#123;<span class="number">1</span>,<span class="string">"Tom"</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">suc, err := engine.Insert(user)</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">affected, err := engine.Id(id).Delete(user)</span><br><span class="line"></span><br><span class="line"><span class="comment">//直接运行sql</span></span><br><span class="line">sql := <span class="string">"select * from userinfo"</span></span><br><span class="line">results, err := engine.Query(sql)</span><br><span class="line"></span><br><span class="line">sql = <span class="string">"update `userinfo` set username=? where id=?"</span></span><br><span class="line">res, err := engine.Exec(sql, <span class="string">"xiaolun"</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Rest框架"><a href="#5-Rest框架" class="headerlink" title="5. Rest框架"></a>5. Rest框架</h2><p>轻量级应用使用<a href="https://gin-gonic.com/" target="_blank" rel="noopener">gin</a>。（Iris作者花边新闻太多）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">"/test"</span>,<span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span>&#123;</span><br><span class="line">		c.JSON(<span class="number">200</span>,gin.H&#123;<span class="string">"message"</span>:<span class="string">"pong"</span>&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -239,169 +230,64 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/17/atlas-intro/" class="archive-article-date">
-  	<time datetime="2019-06-17T02:15:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/06/25/distributed-lock-microservice/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          分布式锁与配置中心与服务发现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/17/atlas-intro/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Atlas简介</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/17/atlas-intro/">Atlas简介</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据治理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/13/airflow-tutorial/" class="archive-article-date">
-  	<time datetime="2019-06-13T05:29:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/13/airflow-tutorial/">Airflow使用指北</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">airflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调度</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/03/airflow-setup/" class="archive-article-date">
-  	<time datetime="2019-06-03T07:21:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/03/airflow-setup/">Airflow安装部署</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">airflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调度</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -424,9 +310,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
