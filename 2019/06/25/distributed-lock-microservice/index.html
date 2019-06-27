@@ -9,14 +9,14 @@
   <title>分布式锁与配置中心与服务发现 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="分布式锁可以考虑用以下三个组件实现：    特性 redis zookeeper etcd    一致性算法 无 paxos raft   CAP AP CP CP   高可用 主从 N+1 N+1   接口类型 客户端 客户端 http/rpc   实现 setNX createEphemeral resutful API">
-<meta name="keywords" content="技术,分布式,锁,微服务">
+<meta name="keywords" content="分布式,锁,微服务,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式锁与配置中心与服务发现">
 <meta property="og:url" content="http://feifanlee.githu.io/2019/06/25/distributed-lock-microservice/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
 <meta property="og:description" content="分布式锁可以考虑用以下三个组件实现：    特性 redis zookeeper etcd    一致性算法 无 paxos raft   CAP AP CP CP   高可用 主从 N+1 N+1   接口类型 客户端 客户端 http/rpc   实现 setNX createEphemeral resutful API">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-25T07:22:29.141Z">
+<meta property="og:updated_time" content="2019-06-25T08:59:44.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式锁与配置中心与服务发现">
 <meta name="twitter:description" content="分布式锁可以考虑用以下三个组件实现：    特性 redis zookeeper etcd    一致性算法 无 paxos raft   CAP AP CP CP   高可用 主从 N+1 N+1   接口类型 客户端 客户端 http/rpc   实现 setNX createEphemeral resutful API">
@@ -324,6 +324,13 @@
 </ul>
 <p>consul和eureka是专为服务发现设计的。eureka为spring设计，consul用GO编写。</p>
 <hr>
+<p>consul四大特性:</p>
+<ol>
+<li>服务发现：利用服务注册，服务发现功能来实现服务治理。</li>
+<li>健康检查：利用consul注册的检查检查函数或脚本来判断服务是否健康，若服务不存在则从注册中心移除该服务，减少故障服务请求。</li>
+<li>k/v数据存储：存储kv数据，可以作为服务配置中心来使用。</li>
+<li>多数据中心：可以建立多个consul集群通过inter网络进行互联，进一步保证数据可用性。</li>
+</ol>
 
       
 
@@ -337,10 +344,6 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
         		</li>
       		 
@@ -350,6 +353,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -367,6 +374,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/06/27/crypto-algo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          加密算法简介
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/19/golang-setup/" id="article-nav-older" class="article-nav-link-wrap">
@@ -492,26 +508,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">airflow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">调度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
@@ -524,11 +520,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GO</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">airflow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">调度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据治理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
             
             <div class="clearfix"></div>

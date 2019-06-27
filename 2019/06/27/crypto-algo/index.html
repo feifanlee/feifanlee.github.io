@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>Tag: 分布式 | feifanlee.github.io</title>
+  <title>加密算法简介 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="feifanlee.github.io">
-<meta property="og:url" content="http://feifanlee.githu.io/tags/分布式/index.html">
+  <meta name="description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
+<meta name="keywords" content="技术,加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加密算法简介">
+<meta property="og:url" content="http://feifanlee.githu.io/2019/06/27/crypto-algo/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
+<meta property="og:description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-27T05:25:06.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="feifanlee.github.io">
+<meta name="twitter:title" content="加密算法简介">
+<meta name="twitter:description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -144,72 +149,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-crypto-algo" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/25/distributed-lock-microservice/" class="archive-article-date">
-  	<time datetime="2019-06-25T05:45:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/25/distributed-lock-microservice/">分布式锁与配置中心与服务发现</a>
+    <h1 class="article-title" itemprop="name">
+      加密算法简介
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/27/crypto-algo/" class="archive-article-date">
+  	<time datetime="2019-06-27T02:48:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>加密算法大概分为编码、摘要、对称和非对称四种。</p>
+<a id="more"></a>
+
+<h2 id="1-编码"><a href="#1-编码" class="headerlink" title="1. 编码"></a>1. 编码</h2><p>base64、base32x、base16等主要是把二进制转换成可显示的字符串的方式。base64和base32x会把不足的位数用=补足，因此末尾会出现1~3个=，所以很容易猜到所使用的编码方法。</p>
+<p>URL编码只是把一些url中的保留字符用%开头的代替，其他字符不变。</p>
+<h2 id="2-摘要"><a href="#2-摘要" class="headerlink" title="2. 摘要"></a>2. 摘要</h2><p>摘要主要有MD5、SHA（哈希）、MAC等，是单向加密算法，将或长或端的二进制数据计算出若干位数的特征值（MD5为128位，SHA1为160位，SHA256为256位）。主要应用场景有网络传输中防止数据被篡改，密码以摘要形式入库等。</p>
+<blockquote>
+<p>特征值越长越不容易碰撞冲突。</p>
+</blockquote>
+<h2 id="3-对称加密"><a href="#3-对称加密" class="headerlink" title="3. 对称加密"></a>3. 对称加密</h2><p>常用的有DES、AES、三重DES等。加密方与解密方工共享同一个密钥，使用该密钥加解密。</p>
+<p>DES运算速度快，资源消耗少，但是可以被暴力破解。1999年可以在一天内破解。3DES则处理速度不高，逐渐被AES取代。</p>
+<p>AES是高级加密标准，2000年选取Rijndael作为AES。选取标准为算法没有弱点，加密及密钥准备速度要够快等。</p>
+<h2 id="4-非对称加密"><a href="#4-非对称加密" class="headerlink" title="4. 非对称加密"></a>4. 非对称加密</h2><p>常用的有DSA、RSA、ECDSA等。非对称加密中密钥分为公钥和私钥，用公钥加密的内容只有私钥才能解密。解密方将一堆公私钥中的公钥公开，加密方使用公钥加密数据，发送给解密方后用私钥解密数据。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">锁</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">加密</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/06/25/distributed-lock-microservice/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分布式锁与配置中心与服务发现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -232,9 +276,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
