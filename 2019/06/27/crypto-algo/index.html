@@ -9,14 +9,14 @@
   <title>加密算法简介 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
-<meta name="keywords" content="技术,加密">
+<meta name="keywords" content="加密,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="加密算法简介">
 <meta property="og:url" content="http://feifanlee.githu.io/2019/06/27/crypto-algo/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
 <meta property="og:description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T05:25:06.874Z">
+<meta property="og:updated_time" content="2019-06-27T07:27:44.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加密算法简介">
 <meta name="twitter:description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
@@ -182,6 +182,67 @@
 <p>DES运算速度快，资源消耗少，但是可以被暴力破解。1999年可以在一天内破解。3DES则处理速度不高，逐渐被AES取代。</p>
 <p>AES是高级加密标准，2000年选取Rijndael作为AES。选取标准为算法没有弱点，加密及密钥准备速度要够快等。</p>
 <h2 id="4-非对称加密"><a href="#4-非对称加密" class="headerlink" title="4. 非对称加密"></a>4. 非对称加密</h2><p>常用的有DSA、RSA、ECDSA等。非对称加密中密钥分为公钥和私钥，用公钥加密的内容只有私钥才能解密。解密方将一堆公私钥中的公钥公开，加密方使用公钥加密数据，发送给解密方后用私钥解密数据。</p>
+<hr>
+<p>以18个字符的身份证号加密为例</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>显示例子</th>
+<th>长度（字符）</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base64</td>
+<td>MzEwMTA1MTk4ODAxMDE3ODlY</td>
+<td>24</td>
+<td>直接用base64编码可以直接逆算解码出身份证号。并且结果中包含【/】，【+】，【=】三种字符。</td>
+</tr>
+<tr>
+<td>Base32</td>
+<td>GMYTAMJQGUYTSOBYGAYTAMJXHA4VQ===</td>
+<td>32</td>
+<td>可以逆算解码出身份证号，结果中只包含【=】特殊字符，但长度比base64更长。</td>
+</tr>
+<tr>
+<td>Sha1(16进制显示)</td>
+<td>f1f49617f4d5299c6c869ed9b94bf806f7ce4ee0</td>
+<td>40</td>
+<td>哈希摘要算法，无法逆运算。16进制显示长度很长。</td>
+</tr>
+<tr>
+<td>Sha1+base64</td>
+<td>8fSWF/TVKZxshp7ZuUv4BvfOTuA=</td>
+<td>28</td>
+<td></td>
+</tr>
+<tr>
+<td>Sha1+base32</td>
+<td>6H2JMF7U2UUZY3EGT3M3SS7YA3344TXA</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>Md5(16进制显示)</td>
+<td>cec3057f015001fe1186b956013f6239</td>
+<td>32</td>
+<td>Md5摘要算法，无法逆运算。</td>
+</tr>
+<tr>
+<td>Md5+base64</td>
+<td>zsMFfwFQAf4RhrlWAT9iOQ==</td>
+<td>24</td>
+<td></td>
+</tr>
+<tr>
+<td>Md5+base32</td>
+<td>Z3BQK7YBKAA74EMGXFLACP3CHE======</td>
+<td>32</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>另：对称加密算法（如AES）必须保留密钥，为保证算法统一密钥无法更改，密钥如泄露结果和直接base64编码一样直接逆推出原号。因此未测试。</p>
 
       
 
@@ -195,11 +256,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">加密</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">加密</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -217,6 +278,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/07/01/tidb-2019-meetup/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          TiDB2019见面会记录
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/25/distributed-lock-microservice/" id="article-nav-older" class="article-nav-link-wrap">
@@ -342,15 +412,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -378,7 +440,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+                <a href="javascript:void(0)" class="js-tag color5">TiDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
