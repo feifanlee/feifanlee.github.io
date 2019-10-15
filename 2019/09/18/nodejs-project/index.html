@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>Tag: GO | feifanlee.github.io</title>
+  <title>纯nodejs:Express/KOA+Antd项目实战 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="feifanlee.github.io">
-<meta property="og:url" content="http://feifanlee.githu.io/tags/GO/index.html">
+  <meta name="description" content="开始做一个NODEJS项目，准备用ANTD前台+EXPRESS后台方式实现。  选NODEJS的原因是他本身对异步多路IO的支持优秀。 使用ANTD作为前台因为REACT今年占比依然超过一半，且ANTD作为前端UI已然是事实标准。 用EXPRESS因为后台需求简单并无太多需求。">
+<meta name="keywords" content="技术,nodejs,前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="纯nodejs:Express&#x2F;KOA+Antd项目实战">
+<meta property="og:url" content="http://feifanlee.githu.io/2019/09/18/nodejs-project/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
+<meta property="og:description" content="开始做一个NODEJS项目，准备用ANTD前台+EXPRESS后台方式实现。  选NODEJS的原因是他本身对异步多路IO的支持优秀。 使用ANTD作为前台因为REACT今年占比依然超过一半，且ANTD作为前端UI已然是事实标准。 用EXPRESS因为后台需求简单并无太多需求。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-15T09:27:01.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="feifanlee.github.io">
+<meta name="twitter:title" content="纯nodejs:Express&#x2F;KOA+Antd项目实战">
+<meta name="twitter:description" content="开始做一个NODEJS项目，准备用ANTD前台+EXPRESS后台方式实现。  选NODEJS的原因是他本身对异步多路IO的支持优秀。 使用ANTD作为前台因为REACT今年占比依然超过一半，且ANTD作为前端UI已然是事实标准。 用EXPRESS因为后台需求简单并无太多需求。">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -144,36 +149,154 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-nodejs-project" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/golang-setup/" class="archive-article-date">
-  	<time datetime="2019-06-19T07:56:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/golang-setup/">GO语言入门</a>
+    <h1 class="article-title" itemprop="name">
+      纯nodejs:Express/KOA+Antd项目实战
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/18/nodejs-project/" class="archive-article-date">
+  	<time datetime="2019-09-18T07:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始做一个NODEJS项目，准备用ANTD前台+EXPRESS后台方式实现。</p>
+<ul>
+<li>选NODEJS的原因是他本身对异步多路IO的支持优秀。</li>
+<li>使用ANTD作为前台因为REACT今年占比依然超过一半，且ANTD作为前端UI已然是事实标准。</li>
+<li>用EXPRESS因为后台需求简单并无太多需求。<a id="more"></a>
+那么，我们开始吧</li>
+</ul>
+<h1 id="1-Express"><a href="#1-Express" class="headerlink" title="1. Express"></a>1. Express</h1><h2 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h2><p>NODEJS安装就不再详述。安装express</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir backend</span><br><span class="line"><span class="built_in">cd</span> backend</span><br><span class="line">npm init</span><br><span class="line">npm install express --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-Hello-World"><a href="#1-2-Hello-World" class="headerlink" title="1.2 Hello World"></a>1.2 Hello World</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>,(req,res)=&gt;res.send(<span class="string">'Hello World!'</span>))</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;<span class="built_in">console</span>.log(<span class="string">'Example app listening on port 3000'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>如果要使用ES6/ES？的特性：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install --global babel-cli</span><br><span class="line">npm install --save-dev babel-preset-env babel-preset-stage-2</span><br></pre></td></tr></table></figure>
+
+<p>在package.json中添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "start": "babel-node index.js --presets env,stage-2"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建<code>.babelrc</code>文件</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span>: ['env']</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后使用 <code>npm start</code> 运行项目。</p>
+<p>或者使用<code>babel-node xxx.js</code>运行单个JS。</p>
+<h2 id="1-3-中间件（拦截器）"><a href="#1-3-中间件（拦截器）" class="headerlink" title="1.3 中间件（拦截器）"></a>1.3 中间件（拦截器）</h2><p>Express可以通过<code>app.use</code>注册中间件作为拦截器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use([path,] func(req,res,next)&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>中间件以use的顺序调用，要调用下一个中间件要调用<code>next()</code></p>
+<h2 id="1-4-session"><a href="#1-4-session" class="headerlink" title="1.4 session"></a>1.4 session</h2><p>安装express-session中间件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express-session --save</span><br></pre></td></tr></table></figure>
+
+<p>注册session中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> session <span class="keyword">from</span> <span class="string">'express-session'</span></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">    secret:<span class="string">'session keyword'</span>,</span><br><span class="line">    resave: <span class="literal">false</span>,</span><br><span class="line">    cookie:&#123;<span class="attr">maxAge</span>:<span class="number">60000</span>&#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以用<code>req.session</code>调用session了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">req.session.varname = <span class="string">'value'</span></span><br><span class="line"><span class="built_in">console</span>.log(req.session.varname)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-router"><a href="#1-5-router" class="headerlink" title="1.5 router"></a>1.5 router</h2><p>express中可以定义router。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line">router.get(<span class="string">'/myget'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;...&#125;)</span><br><span class="line">app.use(<span class="string">'/router'</span>,router);</span><br></pre></td></tr></table></figure>
+
+<p>router本身就像一个中间件一样；但又像一个独立app一样，可以有自己的中间件,再定义自己的get/post等URL动作。</p>
+<h2 id="1-6-文件流下载"><a href="#1-6-文件流下载" class="headerlink" title="1.6 文件流下载"></a>1.6 文件流下载</h2><p>直接将流pipe到res中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">'fs'</span></span><br><span class="line">app.get(<span class="string">'/download'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    is = fs.createReadStream(<span class="string">'data.txt'</span>)</span><br><span class="line">    res.attachment(<span class="string">'downloadfilename.txt'</span>)</span><br><span class="line">    is.pipe(res)</span><br><span class="line">    is.end()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-7-参数"><a href="#1-7-参数" class="headerlink" title="1.7 参数"></a>1.7 参数</h2><h3 id="1-7-1-查询参数"><a href="#1-7-1-查询参数" class="headerlink" title="1.7.1 查询参数"></a>1.7.1 查询参数</h3><p>即url后<code>?var=abc</code>这种。在<code>req.query</code>中。</p>
+<h3 id="1-7-2-URL参数"><a href="#1-7-2-URL参数" class="headerlink" title="1.7.2 URL参数"></a>1.7.2 URL参数</h3><p>在URL中取变量的方式，分为定义变量名及正则两种。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//url: /user/:name</span></span><br><span class="line"><span class="keyword">let</span> name = req.params.name</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//url: /file/*</span></span><br><span class="line"><span class="keyword">let</span> filename = req.params[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-7-3-Body参数"><a href="#1-7-3-Body参数" class="headerlink" title="1.7.3 Body参数"></a>1.7.3 Body参数</h3><p>将参数放在BODY中传输过来的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)();</span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> multer = <span class="built_in">require</span>(<span class="string">'multer'</span>); <span class="comment">// v1.0.5</span></span><br><span class="line"><span class="keyword">var</span> upload = multer(); <span class="comment">// for parsing multipart/form-data</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.json()); <span class="comment">// for parsing application/json</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">true</span> &#125;)); <span class="comment">// for parsing application/x-www-form-urlencoded</span></span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/profile'</span>, upload.array(), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.body);</span><br><span class="line">  res.json(req.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-Antd-Pro"><a href="#2-Antd-Pro" class="headerlink" title="2. Antd Pro"></a>2. Antd Pro</h1><h2 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h2><p>目前的ANTD PRO已经被整合进UMI中，UMI一般用YARN安装，别挣扎了，放弃NPM吧。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn</span><br><span class="line">yarn create umi</span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+
+<p>也许会遇到NODEJS版本太低问题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g n</span><br><span class="line"><span class="built_in">which</span> node</span><br><span class="line"><span class="built_in">export</span> N_PREFIX=/path/to/node <span class="comment">#node实际安装位置</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$N_PREFIX</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">n stable <span class="comment"># 或者n latest</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-开发"><a href="#2-2-开发" class="headerlink" title="2.2 开发"></a>2.2 开发</h2><p>新建的component要继承React.Component。class中新建的方法要name=(arg)=&gt;{}这种方式创建。</p>
+<p>建立一个新的页面主要设计到以下几个目录：</p>
+<ul>
+<li>pages。新建页面。</li>
+<li>models。页面的dva/redux的state模型。也可以在pages下建立models目录。</li>
+<li>services。用来调用rest接口。</li>
+<li>components。公用的组件。</li>
+</ul>
+<p>在Pages中建立页面时，因为之后要在config/config.js中配置到component项下面，建议建立同名目录，并使用index.tsx来配置页面内容，以便页面中分离多块。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; PageHeaderWrapper &#125; <span class="keyword">from</span> <span class="string">'@ant-design/pro-layout'</span>;</span><br><span class="line"><span class="keyword">import</span> MyComponent <span class="keyword">from</span> <span class="string">'./MyComponent'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (): React.ReactNode =&gt;(</span><br><span class="line">    &lt;PageHeaderWrapper&gt;    </span><br><span class="line">            &lt;MyComponent/&gt;</span><br><span class="line">    &lt;<span class="regexp">/PageHeaderWrapper&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p>之后在index.js的同级目录中建立MyComponent.tsx。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Descriptions, Card, Button, Table &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;connect&#125; <span class="keyword">from</span> <span class="string">'dva'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Card&gt;</span><br><span class="line">            &lt;Descriptions title=<span class="string">"New Page"</span>&gt;</span><br><span class="line">                &lt;Descriptions.Item label=<span class="string">'name'</span>&gt;&#123;<span class="keyword">this</span>.props.newname&#125;&lt;<span class="regexp">/Descriptions.Item&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>Descriptions&gt;</span><br><span class="line">            &lt;Button onClick=&#123;<span class="keyword">this</span>.newnamefunc&#125;  type=<span class="string">'primary'</span> &gt;change&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Button onClick=&#123;this.query&#125;   &gt;query&lt;/</span>Button&gt;</span><br><span class="line">            &lt;Button href=<span class="string">'/server/api/downloadzip'</span>&gt;download file zip&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Table columns=&#123;this.columns&#125; dataSource=&#123;this.props.data&#125;&gt; &lt;/</span>Table&gt;</span><br><span class="line">            &lt;<span class="regexp">/Card&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function mapStateToProps(&#123; MyComponent, loading &#125;) &#123;</span></span><br><span class="line"><span class="regexp">    return &#123;</span></span><br><span class="line"><span class="regexp">        newname : MyComponent.newname,</span></span><br><span class="line"><span class="regexp">        data : MyComponent.data,</span></span><br><span class="line"><span class="regexp">        loading</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default connect(mapStateToProps)(Netasso)</span></span><br></pre></td></tr></table></figure>
+
+<p>Note：</p>
+<ul>
+<li>dva会将state当作props传入component中，而ts的class中将无法直接调用props中的属性，需要使用this.props.xxx来调用state中的属性及dispatch等方法。</li>
+<li>dva的connect中第一个参数为将所有models中挑选出该component所需的传入该component中的函数。函数参数的obj中，成员名为model的namespace。</li>
+<li>connect的本质是在component外包一层state，并将state传入props中。</li>
+</ul>
+<p>确定好该component需要的state成员后，建立该component的model，在同级目录下建立models，在其中建立MyComponent.ts。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;query&#125; <span class="keyword">from</span> <span class="string">'@/services/MyComponent'</span></span><br><span class="line"><span class="keyword">const</span> Model = &#123;</span><br><span class="line">    namespace:<span class="string">'MyComponent'</span>,</span><br><span class="line">    state:&#123;</span><br><span class="line">        newname:<span class="string">'initialized'</span>,</span><br><span class="line">        data:[]</span><br><span class="line">    &#125;,</span><br><span class="line">    effects:&#123;</span><br><span class="line">        *fetch(&#123;payload&#125;,&#123;call,put&#125;)&#123;</span><br><span class="line">            <span class="keyword">const</span> response = <span class="keyword">yield</span> call(query);</span><br><span class="line">            <span class="keyword">yield</span> put(&#123;</span><br><span class="line">                type:<span class="string">'loaddata'</span>,</span><br><span class="line">                payload:&#123;<span class="attr">data</span>:response&#125;,</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    reducers:&#123;</span><br><span class="line">        newname(state,&#123;payload&#125;)&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                ...state,</span><br><span class="line">                newname:payload.newname,</span><br><span class="line">                <span class="comment">// data:[]</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        loaddata(state,&#123;payload&#125;)&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                ...state,</span><br><span class="line">                data:payload.data</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Model</span><br></pre></td></tr></table></figure>
+
+<p>Note：</p>
+<ul>
+<li>state中定义初始值。</li>
+<li>reducers定义更改state的方法，可以用dispatch调用。</li>
+<li>effects定义异步方式下的查询及调用流程。<code>call</code>是调用services中的查询。<code>put</code>是调用reducers。</li>
+</ul>
+<p>之后在services中配置与后台的交互即可。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'@/utils/request'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> request(<span class="string">'/server/api/myquery'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-前后端分离问题"><a href="#2-3-前后端分离问题" class="headerlink" title="2.3 前后端分离问题"></a>2.3 前后端分离问题</h2><p><code>config/config.js</code>最下方的<code>proxy</code>是转发代理，这样就能调用其他接口/服务器上的服务。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy: &#123;</span><br><span class="line">  <span class="string">'/server/api/'</span>: &#123;                          <span class="comment">//匹配的路径头</span></span><br><span class="line">    target: <span class="string">'http://127.0.0.1:3009/'</span>,        <span class="comment">//转移去的服务</span></span><br><span class="line">    changeOrigin: <span class="literal">true</span>,                      <span class="comment">//是否修改路径</span></span><br><span class="line">    pathRewrite: &#123; <span class="string">'^/server/api/'</span>: <span class="string">''</span> &#125;,    <span class="comment">//如何替换路径</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果部署方案是打包成静态文件部署到服务器中，react路由会导致路由url刷新显示404问题。解决方案是<code>config/config.js</code>中添加配置，将路由改为hash路由。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history:'hash',</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>很多网上的文档说需要改<code>.umirc.js</code>，但antd pro中没有这个文件，<code>config/config.js</code>有相同功能。如果二者共存以<code>.umirc.js</code>为准。</p>
+</blockquote>
+<h1 id="3-KOA"><a href="#3-KOA" class="headerlink" title="3 KOA"></a>3 KOA</h1><p>express在面对简单的需求时表现良好，作为NODEJS新手的玩具足够了。但是深入了解异步机制与回调机制之后，很多express的写法让人如鲠在喉，甚至不对ES6有一定的排斥性。GITHUB上一看express上一次更新已经是5个月前了，团队逐渐将精力投入KOA中，一看KOA的插件数量就比express不知道高到哪去了。虽然目前KOA没有一个官方的脚手架，但因为其本身就是中间件框架，只要不断手动导入所需中间件就行了，因此目前使用感觉良好。</p>
+<h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save koa</span><br><span class="line">npm install --save @koa/route</span><br><span class="line">npm install --save koa-static</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-Hello-World"><a href="#3-2-Hello-World" class="headerlink" title="3.2 Hello World"></a>3.2 Hello World</h2><p>NODEJS 8.0以上支持大部分的ES语法，但是不支持<code>import</code>/<code>export</code>，还是乖乖用<code>require</code>吧。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">const</span> Koa =<span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'./router'</span>)</span><br><span class="line">app.use(router.routes())</span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//router.js</span></span><br><span class="line"><span class="keyword">const</span> KoaRouter = <span class="built_in">require</span>(<span class="string">'@koa/router'</span>)</span><br><span class="line"><span class="keyword">const</span> router = KoaRouter()</span><br><span class="line">router.get(<span class="string">'/init'</span>, <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>)</span>&#123; <span class="comment">// ctx = express request+response</span></span><br><span class="line">    ctx.body = <span class="string">'Hello World'</span> <span class="comment">//ctx.body = string | object | buffer | stream</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不要用箭头函数</p>
+</blockquote>
+<blockquote>
+<p>不要用箭头函数</p>
+</blockquote>
+<blockquote>
+<p>不要用箭头函数</p>
+</blockquote>
+<blockquote>
+<p>检查当前可用ES语法：<code>npm install -g es-checker; es-checker</code></p>
+</blockquote>
+<h2 id="3-3-页面服务器"><a href="#3-3-页面服务器" class="headerlink" title="3.3 页面服务器"></a>3.3 页面服务器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> KoaStatic = <span class="built_in">require</span>(<span class="string">'koa-static'</span>)</span><br><span class="line">app.use(KoaStatic(path.join(__dirname, <span class="string">'static'</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>url根路径<code>/</code>会自动找static目录下的index.html。把and pro打包出来的dist目录全部扔进static目录即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -183,25 +306,65 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GO</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/28/project-manager-experience/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一次项目管理经验</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -224,9 +387,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
