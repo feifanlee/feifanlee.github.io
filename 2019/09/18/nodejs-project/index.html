@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="feifanlee.github.io">
 <meta property="og:description" content="开始做一个NODEJS项目，准备用ANTD前台+EXPRESS后台方式实现。  选NODEJS的原因是他本身对异步多路IO的支持优秀。 使用ANTD作为前台因为REACT今年占比依然超过一半，且ANTD作为前端UI已然是事实标准。 用EXPRESS因为后台需求简单并无太多需求。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-15T09:27:01.849Z">
+<meta property="og:updated_time" content="2019-10-23T09:07:11.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="纯nodejs:Express&#x2F;KOA+Antd项目实战">
 <meta name="twitter:description" content="开始做一个NODEJS项目，准备用ANTD前台+EXPRESS后台方式实现。  选NODEJS的原因是他本身对异步多路IO的支持优秀。 使用ANTD作为前台因为REACT今年占比依然超过一半，且ANTD作为前端UI已然是事实标准。 用EXPRESS因为后台需求简单并无太多需求。">
@@ -268,6 +268,12 @@
 <blockquote>
 <p>很多网上的文档说需要改<code>.umirc.js</code>，但antd pro中没有这个文件，<code>config/config.js</code>有相同功能。如果二者共存以<code>.umirc.js</code>为准。</p>
 </blockquote>
+<h2 id="2-4-BUG修复"><a href="#2-4-BUG修复" class="headerlink" title="2.4 BUG修复"></a>2.4 BUG修复</h2><p>antd毕竟是开源项目，问题还是有很多的，主要集中在登录和权限上。需要手动修复以下BUG：</p>
+<ul>
+<li><a href="https://github.com/ant-design/ant-design-pro/issues/5392" target="_blank" rel="noopener">手动输入地址可以跳过权限</a></li>
+<li><a href="https://github.com/ant-design/ant-design-pro/issues/5147" target="_blank" rel="noopener">账号切换需要刷新菜单权限才刷新</a></li>
+<li><a href="https://github.com/ant-design/ant-design-pro/issues/5348" target="_blank" rel="noopener">用currentUser判断登录需要登录两次</a></li>
+</ul>
 <h1 id="3-KOA"><a href="#3-KOA" class="headerlink" title="3 KOA"></a>3 KOA</h1><p>express在面对简单的需求时表现良好，作为NODEJS新手的玩具足够了。但是深入了解异步机制与回调机制之后，很多express的写法让人如鲠在喉，甚至不对ES6有一定的排斥性。GITHUB上一看express上一次更新已经是5个月前了，团队逐渐将精力投入KOA中，一看KOA的插件数量就比express不知道高到哪去了。虽然目前KOA没有一个官方的脚手架，但因为其本身就是中间件框架，只要不断手动导入所需中间件就行了，因此目前使用感觉良好。</p>
 <h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save koa</span><br><span class="line">npm install --save @koa/route</span><br><span class="line">npm install --save koa-static</span><br></pre></td></tr></table></figure>
 
@@ -457,10 +463,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">调度</a>
               </li>
              
@@ -485,10 +487,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据治理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
              
@@ -509,11 +507,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据治理</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
