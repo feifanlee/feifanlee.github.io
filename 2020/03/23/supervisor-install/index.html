@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>TiDB2019见面会记录 | feifanlee.github.io</title>
+  <title>supervisor安装使用 | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="虽说有五六个城市办见面会，但上海的排场也小了点，大概总共也就一百多两百不到的人参加吧。午饭给的汉堡不好吃，量还不够，主办方自己都跑楼下咖吧开小灶。然而就这种程度的福利，一群码畜还抢的跟不要钱一样。数据从业者到底有多惨。">
-<meta name="keywords" content="大数据,技术,TiDB">
+  <meta name="description" content="supervisor是进程监控的看家宝刀了，之前yum一条龙安装省心省力，但是在生产安装配置了阿里云的镜像之后完全找不到了。没办法，拿起小米加步枪，pip安装走起。">
+<meta name="keywords" content="技术,运维">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TiDB2019见面会记录">
-<meta property="og:url" content="http://feifanlee.githu.io/2019/07/01/tidb-2019-meetup/index.html">
+<meta property="og:title" content="supervisor安装使用">
+<meta property="og:url" content="http://feifanlee.githu.io/2020/03/23/supervisor-install/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
-<meta property="og:description" content="虽说有五六个城市办见面会，但上海的排场也小了点，大概总共也就一百多两百不到的人参加吧。午饭给的汉堡不好吃，量还不够，主办方自己都跑楼下咖吧开小灶。然而就这种程度的福利，一群码畜还抢的跟不要钱一样。数据从业者到底有多惨。">
+<meta property="og:description" content="supervisor是进程监控的看家宝刀了，之前yum一条龙安装省心省力，但是在生产安装配置了阿里云的镜像之后完全找不到了。没办法，拿起小米加步枪，pip安装走起。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T02:32:42.494Z">
+<meta property="og:updated_time" content="2020-03-23T02:51:58.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TiDB2019见面会记录">
-<meta name="twitter:description" content="虽说有五六个城市办见面会，但上海的排场也小了点，大概总共也就一百多两百不到的人参加吧。午饭给的汉堡不好吃，量还不够，主办方自己都跑楼下咖吧开小灶。然而就这种程度的福利，一群码畜还抢的跟不要钱一样。数据从业者到底有多惨。">
+<meta name="twitter:title" content="supervisor安装使用">
+<meta name="twitter:description" content="supervisor是进程监控的看家宝刀了，之前yum一条龙安装省心省力，但是在生产安装配置了阿里云的镜像之后完全找不到了。没办法，拿起小米加步枪，pip安装走起。">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -149,61 +149,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tidb-2019-meetup" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-supervisor-install" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      TiDB2019见面会记录
+      supervisor安装使用
     </h1>
   
 
         
-        <a href="/2019/07/01/tidb-2019-meetup/" class="archive-article-date">
-  	<time datetime="2019-07-01T01:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+        <a href="/2020/03/23/supervisor-install/" class="archive-article-date">
+  	<time datetime="2020-03-23T02:35:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 虽说有五六个城市办见面会，但上海的排场也小了点，大概总共也就一百多两百不到的人参加吧。午饭给的汉堡不好吃，量还不够，主办方自己都跑楼下咖吧开小灶。然而就这种程度的福利，一群码畜还抢的跟不要钱一样。数据从业者到底有多惨。</p>
+        <p>supervisor是进程监控的看家宝刀了，之前yum一条龙安装省心省力，但是在生产安装配置了阿里云的镜像之后完全找不到了。没办法，拿起小米加步枪，pip安装走起。</p>
 <a id="more"></a>
-<p> 但干货还是有的，原厂的分享从原理到实践都有涉及，一天下来对TiDB有了一定了解。请来的一线用户的介绍就有点水了，ppt质量到内容都是。估计钱没给到位。</p>
-<hr>
-<p> CTO黄东旭——还好不是黄旭东——介绍TiDB的设计理念，TiDB一开始只想做存储，但是发现客户想要OLTP就做点呗，OLAP也就加个功能呗，然后做着做着发现自己啥都能做，于是现在的目标是想要做到数据库界的IPHONE，全面做到各界老二。</p>
+
+<p>conda下安装，老方法。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install supervisor</span><br></pre></td></tr></table></figure>
+
+<p>pip安装后并不会自动生成配置，然后配置模板并不在<code>supervisord</code>或<code>supervisorctl</code>中，而是单独一个命令。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo_supervisord_conf &gt; supervisor.conf</span><br></pre></td></tr></table></figure>
+
+<p>配置模板后就可以通过该配置文件启动了，甚至很多文章上看通过默认配置文件会导致<code>supervisorctl reload</code>错误，所以推荐<code>-c</code>方式启动。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c ./supervisor.conf</span><br></pre></td></tr></table></figure>
+
+<p>之后再修改参数就可以<code>reload</code>来刷新配置了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl reload</span><br></pre></td></tr></table></figure>
+
+<p>最后需要一提的是，一些再conda环境中安装的全局命令，比如<code>airflow</code>该如何启动？尝试用<code>conda activate airflow</code>作前置命令，但是都不成功。</p>
 <blockquote>
-<p>联机交易做不过ORACLE，定向优化做不过MYSQL，NOSQL做不过HBASE，ETL做不过HIVE。但只要我啥都能做，你们不用各个异构数据库里互相导，你们就会用得很爽。</p>
+<p>其实这些命令都在conda的安装目录下<br><code>command=$CONDA_HOME/envs/airflow/bin/airflow</code></p>
 </blockquote>
-<ul>
-<li><p>关系型数据库：小数据量，服务在线业务或数仓处理完的数据实时展示</p>
-</li>
-<li><p>NoSql：可拓展，单点高速读写。</p>
-</li>
-<li><p>数据湖/分析型数据库：海量计算与存储。</p>
-<p>这么说来还真的蛮有说服力的。大数据不是面向客户的一线系统，各方面够用的前提下省去数据同步的时间和开销还有异构之间的重复浪费，真的能省不少事。</p>
-<p>然后又听到了个噩耗，果然TIDB就是要SSD，还美其名曰现在SSD越来越便宜。其实你的定位是对SSD优化的数据库吧。</p>
-</li>
-</ul>
-<p>TIDB的整体架构就是现在流行的NEW SQL架构暂且不谈。新版本3.0GA后据说稳定性和速度都有了可观的增长，但这些都是饼。能让人兴奋的是Mysql-&gt;TIDB的迁移与同步工具逐步完善。数据同步有TIDB syncer，批量导入有TIDB Lightning（单节点），还有TIDB Migaration（好像是多节点），还有备份自己本身数据的TiDB Binlog，总之和Mysql的通路应该是畅通无阻了。</p>
-<p>然后又把重头放在再OLAP的实现新组件TiFlash上，自动选择用行存还是列存解决问题什么的都是底层实现无所谓，能快就好。让人兴奋的是其利用raft备份让数据做到OLTP和OLAP在物理层面隔离。这个才是之前提到的TIDB一站式解决所有问题的基础。然后又介绍了各个查询都支持，这个就要回头自己测试验证了。</p>
-<ul>
-<li>高并发查询</li>
-<li>长时间大查询</li>
-<li>即席查询</li>
-<li>实时查询</li>
-</ul>
-<p>原厂还很诚实的介绍了 <strong><em>不足</em></strong> 之处。</p>
-<ul>
-<li>备份恢复效率</li>
-<li>冷热数据分离</li>
-<li>数据弹性伸缩</li>
-<li>跨机房</li>
-</ul>
-<p>最后上场的云团队本来我都打算睡过去，但是突然得到一个振奋的消息，他们的一键式部署也能支持私有云里的kubernetes，这个就很爽了呀，九月份发布，届时再关注一下。</p>
-<p>之前也说了客户的宣讲都比较水，不过他们都基本是围绕数据中台做的讲解。一站式解决方案的确和中台的痛点很匹配啊。不过传递的信息是的确不少厂商包括大厂的数据团队开始使用TiDB了，那么作为一个开源项目就会有足够的生命力不会死了……才怪，毕竟人类希望在美帝，这种没进apache基金会还触动ali蛋糕的数据库项目，中国数据码农世界数据码农也没几个有精力有能力去commit，看看cloudera最近的惨状和kudu的现状就知道了。不过看看这次见面会有钱气息和贫穷的气息混杂的情况，嗯，再观望下吧。</p>
 
       
 
@@ -217,15 +201,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TiDB</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
         		</li>
       		
 		</ul>
@@ -244,18 +224,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/26/fine-report-intro/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          帆软报表入门
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/27/crypto-algo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">加密算法简介</div>
+    <a href="/2019/09/18/nodejs-project/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">纯nodejs:Express/KOA+Antd项目实战</div>
       <i class="icon-circle-right"></i>
     </a>
   
