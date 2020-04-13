@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="feifanlee.github.io">
 <meta property="og:description" content="DataX升级到3.0了，虽然开源版还是不支持集群，但是少量数据导入导出还是蛮方便的。但是hdfs reader/writer一点没变？看看plugin文件夹里的jar包版本号还是0.01-SNAPSHOT真是欲哭无泪。文档上明晃晃的“不支持HA”的大字挂着，字段里hadoopConfig却配置HA配的飞起。度娘一下果然这个问题早就有解决方案了，于是作者就懒得动弹了？反正开源就是要DIY嘛，从来没">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-13T09:41:43.143Z">
+<meta property="og:updated_time" content="2020-04-13T10:12:57.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="让DataX也能支持HiveHA">
 <meta name="twitter:description" content="DataX升级到3.0了，虽然开源版还是不支持集群，但是少量数据导入导出还是蛮方便的。但是hdfs reader/writer一点没变？看看plugin文件夹里的jar包版本号还是0.01-SNAPSHOT真是欲哭无泪。文档上明晃晃的“不支持HA”的大字挂着，字段里hadoopConfig却配置HA配的飞起。度娘一下果然这个问题早就有解决方案了，于是作者就懒得动弹了？反正开源就是要DIY嘛，从来没">
@@ -181,7 +181,10 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;datax_home&#125;</span>/plugin/reader/hdfsreader</span><br><span class="line">cp hdfsreader-0.0.1-SNAPSHOT.jar hdfsreader-0.0.1-SNAPSHOT.jar.bak</span><br><span class="line">mkdir workspace</span><br><span class="line">cp hdfsreader-0.0.1-SNAPSHOT.jar workspace</span><br><span class="line"><span class="built_in">cd</span> workspace</span><br><span class="line">jar -xvf hdfsreader-0.0.1-SNAPSHOT.jar</span><br><span class="line">rm hdfsreader-0.0.1-SNAPSHOT.jar</span><br><span class="line">cp ~/core-site.xml ./</span><br><span class="line">cp ~/hdfs-ste.xml ./</span><br><span class="line">jar -cvf ../hdfsreader-0.0.1-SNAPSHOT.jar ./</span><br></pre></td></tr></table></figure>
 
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>hive默认分隔符’\0001’在DataX的json配置方法为<code>&quot;fieldDelimiter&quot;: &quot;\u0001&quot;</code>。</li>
+<li><p>hive默认分隔符’\0001’在DataX的json配置方法为<code>&quot;fieldDelimiter&quot;: &quot;\u0001&quot;</code>。</p>
+</li>
+<li><p>json文件中可以动态传参，格式为<code>${arg1}</code>。然后再运行时再<code>-p</code>参数中传递该参数，但是要以-D打头。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python datax.py -p <span class="string">"-Darg1=val1 -Darg2=val2"</span> template.json</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -351,10 +354,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">调度</a>
               </li>
              
@@ -364,6 +363,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -387,7 +390,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GO</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据治理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -395,15 +402,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据治理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DataX</a>
+                <a href="javascript:void(0)" class="js-tag color5">TiDB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -411,7 +410,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TiDB</a>
+                <a href="javascript:void(0)" class="js-tag color1">DataX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
              
               <li class="article-tag-list-item">
