@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="feifanlee.github.io">
 <meta property="og:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-13T02:50:25.424Z">
+<meta property="og:updated_time" content="2020-04-03T07:25:00.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Airflow安装部署">
 <meta name="twitter:description" content="1. 环境安装1.1 Anaconda3Anaconda用来管理python环境。 1./Anaconda3-2019.03-Linux-x86_64.sh">
@@ -247,6 +247,10 @@
 
 <blockquote>
 <p><strong>注意：</strong> 此处不可以用pymysql，会出现<em>pendulum has no object translate</em>问题。</p>
+</blockquote>
+<blockquote>
+<p>如果报错<code>mysql_config not found</code>，那是服务器没安装mysql开发包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; yum install mysql-devel gcc gcc-devel python-devel</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="2-4-配置Celery"><a href="#2-4-配置Celery" class="headerlink" title="2.4 配置Celery"></a>2.4 配置Celery</h3><p>这里以redis作为消息队列mysql作为日志后端为例。首先安装依赖包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-airflow[celery,redis,mysql]</span><br></pre></td></tr></table></figure>
@@ -480,6 +484,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">调度</a>
               </li>
              
@@ -489,18 +497,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据治理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,6 +512,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帆软报表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
              
@@ -524,7 +528,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TiDB</a>
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据治理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DataX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,11 +544,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帆软报表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+                <a href="javascript:void(0)" class="js-tag color5">TiDB</a>
               </li>
              
               <li class="article-tag-list-item">

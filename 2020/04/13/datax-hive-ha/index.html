@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feifanlee.githu.io">
-  <title>加密算法简介 | feifanlee.github.io</title>
+  <title>让DataX也能支持HiveHA | feifanlee.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
-<meta name="keywords" content="技术,加密">
+  <meta name="description" content="DataX升级到3.0了，虽然开源版还是不支持集群，但是少量数据导入导出还是蛮方便的。但是hdfs reader/writer一点没变？看看plugin文件夹里的jar包版本号还是0.01-SNAPSHOT真是欲哭无泪。文档上明晃晃的“不支持HA”的大字挂着，字段里hadoopConfig却配置HA配的飞起。度娘一下果然这个问题早就有解决方案了，于是作者就懒得动弹了？反正开源就是要DIY嘛，从来没">
+<meta name="keywords" content="大数据,技术,DataX">
 <meta property="og:type" content="article">
-<meta property="og:title" content="加密算法简介">
-<meta property="og:url" content="http://feifanlee.githu.io/2019/06/27/crypto-algo/index.html">
+<meta property="og:title" content="让DataX也能支持HiveHA">
+<meta property="og:url" content="http://feifanlee.githu.io/2020/04/13/datax-hive-ha/index.html">
 <meta property="og:site_name" content="feifanlee.github.io">
-<meta property="og:description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
+<meta property="og:description" content="DataX升级到3.0了，虽然开源版还是不支持集群，但是少量数据导入导出还是蛮方便的。但是hdfs reader/writer一点没变？看看plugin文件夹里的jar包版本号还是0.01-SNAPSHOT真是欲哭无泪。文档上明晃晃的“不支持HA”的大字挂着，字段里hadoopConfig却配置HA配的飞起。度娘一下果然这个问题早就有解决方案了，于是作者就懒得动弹了？反正开源就是要DIY嘛，从来没">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T07:27:44.607Z">
+<meta property="og:updated_time" content="2020-04-13T09:41:43.143Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="加密算法简介">
-<meta name="twitter:description" content="加密算法大概分为编码、摘要、对称和非对称四种。">
+<meta name="twitter:title" content="让DataX也能支持HiveHA">
+<meta name="twitter:description" content="DataX升级到3.0了，虽然开源版还是不支持集群，但是少量数据导入导出还是蛮方便的。但是hdfs reader/writer一点没变？看看plugin文件夹里的jar包版本号还是0.01-SNAPSHOT真是欲哭无泪。文档上明晃晃的“不支持HA”的大字挂着，字段里hadoopConfig却配置HA配的飞起。度娘一下果然这个问题早就有解决方案了，于是作者就懒得动弹了？反正开源就是要DIY嘛，从来没">
   
     <link rel="alternative" href="/atom.xml" title="feifanlee.github.io" type="application/atom+xml">
   
@@ -149,100 +149,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-crypto-algo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-datax-hive-ha" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      加密算法简介
+      让DataX也能支持HiveHA
     </h1>
   
 
         
-        <a href="/2019/06/27/crypto-algo/" class="archive-article-date">
-  	<time datetime="2019-06-27T02:48:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-27</time>
+        <a href="/2020/04/13/datax-hive-ha/" class="archive-article-date">
+  	<time datetime="2020-04-13T09:15:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>加密算法大概分为编码、摘要、对称和非对称四种。</p>
+        <p>DataX升级到3.0了，虽然开源版还是不支持集群，但是少量数据导入导出还是蛮方便的。但是hdfs reader/writer一点没变？看看plugin文件夹里的jar包版本号还是0.01-SNAPSHOT真是欲哭无泪。文档上明晃晃的“不支持HA”的大字挂着，字段里hadoopConfig却配置HA配的飞起。度娘一下果然这个问题早就有解决方案了，于是作者就懒得动弹了？反正开源就是要DIY嘛，从来没有一步到位的道理，开始搞起。</p>
 <a id="more"></a>
 
-<h2 id="1-编码"><a href="#1-编码" class="headerlink" title="1. 编码"></a>1. 编码</h2><p>base64、base32x、base16等主要是把二进制转换成可显示的字符串的方式。base64和base32x会把不足的位数用=补足，因此末尾会出现1~3个=，所以很容易猜到所使用的编码方法。</p>
-<p>URL编码只是把一些url中的保留字符用%开头的代替，其他字符不变。</p>
-<h2 id="2-摘要"><a href="#2-摘要" class="headerlink" title="2. 摘要"></a>2. 摘要</h2><p>摘要主要有MD5、SHA（哈希）、MAC等，是单向加密算法，将或长或端的二进制数据计算出若干位数的特征值（MD5为128位，SHA1为160位，SHA256为256位）。主要应用场景有网络传输中防止数据被篡改，密码以摘要形式入库等。</p>
+<h2 id="获取HDFS配置文件"><a href="#获取HDFS配置文件" class="headerlink" title="获取HDFS配置文件"></a>获取HDFS配置文件</h2><p>CDH的配置文件一般存在数据库里，但是可以从CM上下载配置文件。毕竟NameNode一般不会变，一次性下载配置就行。</p>
 <blockquote>
-<p>特征值越长越不容易碰撞冲突。</p>
+<p>CM =&gt; HDFS =&gt; 实例 =&gt; NameNode =&gt; 进程</p>
 </blockquote>
-<h2 id="3-对称加密"><a href="#3-对称加密" class="headerlink" title="3. 对称加密"></a>3. 对称加密</h2><p>常用的有DES、AES、三重DES等。加密方与解密方工共享同一个密钥，使用该密钥加解密。</p>
-<p>DES运算速度快，资源消耗少，但是可以被暴力破解。1999年可以在一天内破解。3DES则处理速度不高，逐渐被AES取代。</p>
-<p>AES是高级加密标准，2000年选取Rijndael作为AES。选取标准为算法没有弱点，加密及密钥准备速度要够快等。</p>
-<h2 id="4-非对称加密"><a href="#4-非对称加密" class="headerlink" title="4. 非对称加密"></a>4. 非对称加密</h2><p>常用的有DSA、RSA、ECDSA等。非对称加密中密钥分为公钥和私钥，用公钥加密的内容只有私钥才能解密。解密方将一堆公私钥中的公钥公开，加密方使用公钥加密数据，发送给解密方后用私钥解密数据。</p>
-<hr>
-<p>以18个字符的身份证号加密为例</p>
-<table>
-<thead>
-<tr>
-<th>算法</th>
-<th>显示例子</th>
-<th>长度（字符）</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Base64</td>
-<td>MzEwMTA1MTk4ODAxMDE3ODlY</td>
-<td>24</td>
-<td>直接用base64编码可以直接逆算解码出身份证号。并且结果中包含【/】，【+】，【=】三种字符。</td>
-</tr>
-<tr>
-<td>Base32</td>
-<td>GMYTAMJQGUYTSOBYGAYTAMJXHA4VQ===</td>
-<td>32</td>
-<td>可以逆算解码出身份证号，结果中只包含【=】特殊字符，但长度比base64更长。</td>
-</tr>
-<tr>
-<td>Sha1(16进制显示)</td>
-<td>f1f49617f4d5299c6c869ed9b94bf806f7ce4ee0</td>
-<td>40</td>
-<td>哈希摘要算法，无法逆运算。16进制显示长度很长。</td>
-</tr>
-<tr>
-<td>Sha1+base64</td>
-<td>8fSWF/TVKZxshp7ZuUv4BvfOTuA=</td>
-<td>28</td>
-<td></td>
-</tr>
-<tr>
-<td>Sha1+base32</td>
-<td>6H2JMF7U2UUZY3EGT3M3SS7YA3344TXA</td>
-<td>32</td>
-<td></td>
-</tr>
-<tr>
-<td>Md5(16进制显示)</td>
-<td>cec3057f015001fe1186b956013f6239</td>
-<td>32</td>
-<td>Md5摘要算法，无法逆运算。</td>
-</tr>
-<tr>
-<td>Md5+base64</td>
-<td>zsMFfwFQAf4RhrlWAT9iOQ==</td>
-<td>24</td>
-<td></td>
-</tr>
-<tr>
-<td>Md5+base32</td>
-<td>Z3BQK7YBKAA74EMGXFLACP3CHE======</td>
-<td>32</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>另：对称加密算法（如AES）必须保留密钥，为保证算法统一密钥无法更改，密钥如泄露结果和直接base64编码一样直接逆推出原号。因此未测试。</p>
+<p>在里面就可以下载到core-site.xml和hdfs-site.xml。</p>
+<h2 id="配置文件放入JAR包"><a href="#配置文件放入JAR包" class="headerlink" title="配置文件放入JAR包"></a>配置文件放入JAR包</h2><p>之后要把配置文件放入DataX的hdfsReader插件的JAR包中。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;datax_home&#125;</span>/plugin/reader/hdfsreader</span><br><span class="line">cp hdfsreader-0.0.1-SNAPSHOT.jar hdfsreader-0.0.1-SNAPSHOT.jar.bak</span><br><span class="line">mkdir workspace</span><br><span class="line">cp hdfsreader-0.0.1-SNAPSHOT.jar workspace</span><br><span class="line"><span class="built_in">cd</span> workspace</span><br><span class="line">jar -xvf hdfsreader-0.0.1-SNAPSHOT.jar</span><br><span class="line">rm hdfsreader-0.0.1-SNAPSHOT.jar</span><br><span class="line">cp ~/core-site.xml ./</span><br><span class="line">cp ~/hdfs-ste.xml ./</span><br><span class="line">jar -cvf ../hdfsreader-0.0.1-SNAPSHOT.jar ./</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>hive默认分隔符’\0001’在DataX的json配置方法为<code>&quot;fieldDelimiter&quot;: &quot;\u0001&quot;</code>。</li>
+</ul>
 
       
 
@@ -256,11 +196,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">加密</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DataX</a>
         		</li>
       		
 		</ul>
@@ -279,18 +223,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/01/tidb-2019-meetup/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          TiDB2019见面会记录
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/25/distributed-lock-microservice/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">分布式锁与配置中心与服务发现</div>
+    <a href="/2020/03/23/supervisor-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">supervisor安装使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
